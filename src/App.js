@@ -65,7 +65,7 @@ import IPDReportPage from './Admin/components/IPDReportPage.js';
 import OPDReportPage from './Admin/components/OPDReportPage.js';
 
 import SocketContext from "./context/SocketContext"; // ✅ same instance
-
+import PendingTests from './components/Dashboard/PendingTests.js';
 
 import SonographyList from "./components/Dashboard/SonographyList";
 
@@ -81,12 +81,33 @@ import AddTest from './components/Dashboard/AddTests.js';
 
 import AllTests from './components/Dashboard/AllTests.js';
 import LabPayment from './components/Dashboard/LabPayment.js';
+import QueueManagement from './components/Dashboard/QueueManagement.js';
+import AppointmentList from './components/Dashboard/AppointMentList.js';
+import AppointmentForm from './components/Dashboard/AppointmentForm.js';
+import PatientDashboard from './components/Dashboard/PatientDashboard.js';
+import BookAppointMent from './components/Dashboard/BookAppointMent.js';
+import MyAppointment from './components/Dashboard/MyAppointMent.js';
+import PatientRegister from './components/Dashboard/PatientRegister.js';
 
 const App = () => {
   const ReceptionistRoutes = () => (
   <Routes>
     <Route path="patient-form" element={<PatientForm />} />
     <Route path="viewPatient" element={<ViewPatient />} />
+  <Route
+path="appointments"
+element={<AppointmentForm/>}
+/>
+
+<Route
+path="appointment-list"
+element={<AppointmentList/>}
+/>
+
+<Route
+path="queue-management"
+element={<QueueManagement />}
+/>
     <Route path="visit-form" element={<VisitForm />} />
     <Route path="patient-visits-viewer" element={<PatientVisitsViewer />} />
      <Route path="UpdatePatientStatus" element={<UpdateVisitStatusPage />} /> 
@@ -177,18 +198,18 @@ const InventoryRoutes =()=>(
       </Route>
       </Route>
       <Route>
-      <Route element={<ProtectedRoute role="STAFF" />}>
   <Route path="/lab-dashboard" element={<LabDashboard/>}>
 
-    <Route index element={<AllTests />} />
+  <Route index element={<AllTests />} />
 
-    <Route path="tests" element={<AllTests/>} />
+  <Route path="tests" element={<AllTests/>} />
 
-    <Route path="add-test" element={<AddTest/>} />
+  <Route path="add-test" element={<AddTest/>} />
 
-    <Route path="payments" element={<LabPayment/>} />
+  <Route path="payments" element={<LabPayment/>} />
 
-  </Route>
+  <Route path="pending-tests" element={<PendingTests/>} />
+
 </Route> 
  <Route
   path="/receptionist-dashboard"element={<ReceptionistDashboard />}
@@ -196,6 +217,20 @@ const InventoryRoutes =()=>(
   <Route path="patient-form" element={<PatientForm/>} />
    <Route path="viewPatient" element={<ViewPatient/>} />
       <Route path="visit-form" element={<VisitForm/>} />
+        <Route
+path="appointments"
+element={<AppointmentForm/>}
+/>
+
+<Route
+path="appointment-list"
+element={<AppointmentList/>}
+/>
+
+<Route
+path="queue-management"
+element={<QueueManagement />}
+/>
        <Route path="patient-visits-viewer" element={<PatientVisitsViewer/>} />
  <Route path="UpdatePatientStatus" element={<UpdateVisitStatusPage/>} /> 
 <Route path="IPDAdmissionForm" element={<IPDAdmissionForm/>} />
@@ -314,6 +349,32 @@ const InventoryRoutes =()=>(
 </Route>
 
 </Route>
+
+
+
+
+        {/* PATIENT DASHBOARD */}
+  <Route
+          path="/patient-register"
+          element={<PatientRegister/>}
+        />
+        <Route
+          path="/patient-dashboard"
+          element={<PatientDashboard/>}
+        />
+
+        <Route
+          path="/patient-dashboard/book-appointment"
+          element={<BookAppointMent/>}
+        />
+
+        <Route
+          path="/patient-dashboard/my-appointments"
+          element={<MyAppointment/>}
+        />
+
+ 
+
 
       <Route path="/" element={<Login />} />
       <Route path="*" element={<Navigate to="/" />} />

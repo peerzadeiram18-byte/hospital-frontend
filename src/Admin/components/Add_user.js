@@ -289,7 +289,13 @@ const AddUser = () => {
                     <button type="button" onClick={() => removeScheduleRow(index)}>Remove</button>
                   </div>
                 ))}
-                 <button type="button" onClick={addScheduleRow}>+ Add Schedule</button> 
+              <button
+  type="button"
+  onClick={addScheduleRow}
+  className="schedule-add-btn"
+>
+  + Add Schedule
+</button>
               </>
             )}
 
@@ -307,10 +313,12 @@ const AddUser = () => {
 
                 <select name="designation" value={form.designation} onChange={handleChange} required>
                   <option value="">Select Designation</option>
-                  <option value="Head Nurse">Head Nurse</option>
-                  <option value="Assistant Doctor">Assistant Doctor</option>
+                  <option value="Metron">Metron</option>
+                  <option value="Sonography Assist ">Sonography Assist</option>
                   <option value="Receptionist">Receptionist</option>
-                  <option value="Inventory Manager">Inventory Manager</option>
+                  <option value="Pathologist">Pathologist</option>
+                  <option value="Pharmacists">Pharmacists</option>
+
                   <option value="Other">Other</option>
                 </select>
                 <select name="department" value={form.department} onChange={handleChange}>

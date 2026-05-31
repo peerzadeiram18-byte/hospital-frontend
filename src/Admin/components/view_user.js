@@ -137,16 +137,16 @@ const deleteUser = async (id) => {
                    <th>Role</th>
                   <th>Doctor Type</th>
                   <th>Specialty</th>
-                  {/* <th>Department</th> */}
+                  <th>Department</th>
                   <th>Medical License</th>
-                   {/* <th>Schedule</th> */}
+                   <th>Schedule</th>
                 </>
               )}
               {userType === "STAFF" && (
                 <>
                   <th>Designation</th>
                   <th>Contact</th>
-                  {/* <th>Department</th> */}
+                  <th>Department</th>
                 </>
               )}
               <th>Status</th>
@@ -165,9 +165,9 @@ const deleteUser = async (id) => {
                       <td>{user.userId?.role || user.role || '-'}</td>
                     <td>{user.doctorType || '-'}</td>
                     <td>{user.specialty?.name || '-'}</td>
-                    {/* <td>{user.department?.name || '-'}</td> */}
+                    <td>{user.department?.name || '-'}</td>
                     <td>{user.medicalLicenseNumber || '-'}</td>
-                     {/* <td>
+                      <td>
                       {Array.isArray(user.schedule) ? (
                         user.schedule.map((s, i) => (
                           <div key={i}>
@@ -177,7 +177,7 @@ const deleteUser = async (id) => {
                       ) : (
                         'No schedule'
                       )}
-                    </td>  */}
+                    </td>  
                 
                   </>
                 )}

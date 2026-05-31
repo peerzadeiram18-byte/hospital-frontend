@@ -229,22 +229,3 @@ export default SonographyDashboard;
 
 
 
-// import React from "react";
-// import CreateSonography from "./CreateSonography";
-// import ViewSonography from "./SonographyList";
-
-// const SonographyDashboard = () => {
-//   return (
-//     <div>
-//       <h2>Sonography Dashboard</h2>
-
-//       <CreateSonography />
-
-//       <hr />
-
-//       <ViewSonography />
-//     </div>
-//   );
-// };
-
-// export default SonographyDashboard;

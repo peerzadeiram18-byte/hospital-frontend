@@ -20,7 +20,7 @@ import { useNavigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import axios from "axios";
 
 const drawerWidth = 260;
 
@@ -93,7 +93,35 @@ const drawerContent = (
   
   </Box>
 );
+const handleLogout = async () => {
 
+  try {
+
+    const token = localStorage.getItem("jwt");
+
+    await axios.post(
+      `${process.env.REACT_APP_BASE_URL}/api/auth/logout`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+
+  } catch (err) {
+
+    console.log(err);
+
+  }
+
+  localStorage.removeItem("jwt");
+  localStorage.removeItem("user");
+
+  toast.success("Logout successful");
+
+  navigate("/");
+};
 
   return (
     <Box sx={{ display: 'flex', backgroundColor: '#f4f6f8', minHeight: '100vh' }}>
@@ -122,44 +150,18 @@ const drawerContent = (
         </>
       )}
     </Box>
-     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-       <IconButton
-  color="inherit"
-  onClick={async () => {
-    try {
-      const token = localStorage.getItem("jwt");
-      if (token) {
-        await fetch(`${process.env.REACT_APP_BASE_URL}/api/auth/logout`, {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${token}`,
-          },
-        });
-      }
-    } catch (err) {
-      console.error("Logout request failed", err);
-    } finally {
-      localStorage.removeItem("jwt");
-      window.location.href = "/";
-    }
-  }}
-  edge="end"
-  title="Logout"
->
-  <LogoutIcon />
-</IconButton>
+<Box sx={{ display: 'flex', alignItems: 'center' }}>
+
   <IconButton
-          color="inherit"
-          onClick={() => {
-            localStorage.removeItem("jwt");
-            window.location.href = "/";
-          }}
-          edge="end"
-          title="Logout"
-        >
-          <LogoutIcon />
-        </IconButton> 
-      </Box>
+    color="inherit"
+    onClick={handleLogout}
+    edge="end"
+    title="Logout"
+  >
+    <LogoutIcon />
+  </IconButton>
+
+</Box>
   </Toolbar>
 </AppBar>
 

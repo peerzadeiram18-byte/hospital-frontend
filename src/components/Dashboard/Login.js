@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './Login.css';
 
 import { useNavigate } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 import { FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -50,6 +50,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
     else if (user.designation === "Metron") navigate("/nurse-dashboard");
     else if (user.designation === "O.T. Attendant") navigate("/nurse-dashboard");
      else if (user.designation === "Pathologist") navigate("/lab-dashboard")
+    else if (user.role === "PATIENT") navigate("/patient-dashboard")
     else if (user.designation === "Pharmacists") navigate("/inventoryManager-dashboard");
   else if (user.designation === "Sonography Assist") navigate("/sonography-dashboard");
     // else if (user.designation === "Sonography Assist") navigate("/sonography-dashboard");
@@ -117,6 +118,31 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
           </div>
          
           <button className='button' type="submit">Login</button>
+          <div
+  style={{
+    marginTop: "20px",
+    textAlign: "center"
+  }}
+>
+
+  <p>
+
+    New Patient?
+
+    <Link
+      to="/patient-register"
+      style={{
+        marginLeft: "5px",
+        color: "blue",
+        fontWeight: "bold"
+      }}
+    >
+      Register Here
+    </Link>
+
+  </p>
+
+</div>
         </form>
       </div>
     </div>

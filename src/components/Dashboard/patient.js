@@ -20,6 +20,8 @@ const PatientForm = () => {
   });
 
   // 🔥 NEW STATES
+  const [specialties, setSpecialties] = useState([]);
+const [selectedSpecialty, setSelectedSpecialty] = useState("");
   const [visitType, setVisitType] = useState("");
   const [assignedDoctorId, setAssignedDoctorId] = useState("");
   const [amount, setAmount] = useState("");
@@ -212,7 +214,72 @@ setSubmittedData({
       toast.error(err.response?.data?.message || "Failed");
     }
   };
+ useEffect(() => {
 
+  const fetchSpecialties = async () => {
+
+    try {
+
+      const token = localStorage.getItem("jwt");
+
+      const res = await axios.get(
+        `${BASE_URL}/api/receptionist/specialties`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      setSpecialties(res.data.specialties || []);
+
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  fetchSpecialties();
+
+}, []);
+const fetchDoctorsBySpecialty = async (specialtyId) => {
+
+  setSelectedSpecialty(specialtyId);
+
+  setAssignedDoctorId("");
+
+  if (!specialtyId) {
+    setDoctors([]);
+    return;
+  }
+
+  try {
+
+    const token = localStorage.getItem("jwt");
+
+    const res = await axios.post(
+      `${BASE_URL}/api/receptionist/doctors`,
+      {
+        specialtyId
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+
+    setDoctors(res.data.doctors || []);
+
+    if (!res.data.doctors?.length) {
+      toast.error("No doctor available today");
+    }
+
+  } catch (err) {
+    console.log(err);
+
+    toast.error("Failed to fetch doctors");
+  }
+};
   // 🖨️ PRINT
 const handlePrint = () => {
   const printContents = printRef.current.innerHTML;
@@ -412,11 +479,40 @@ const handlePrint = () => {
           <option value="IPD_Admission">IPD Admission</option>
         </select>
 
-       <select value={assignedDoctorId} onChange={(e) => setAssignedDoctorId(e.target.value)}>
-  <option value="">Select Doctor</option>
+     {/* SPECIALTY */}
+
+<select
+  value={selectedSpecialty}
+  onChange={(e) =>
+    fetchDoctorsBySpecialty(e.target.value)
+  }
+>
+  <option value="">
+    Select Specialty
+  </option>
+
+  {specialties.map((sp) => (
+    <option key={sp._id} value={sp._id}>
+      {sp.name}
+    </option>
+  ))}
+</select>
+
+{/* DOCTOR */}
+
+<select
+  value={assignedDoctorId}
+  onChange={(e) =>
+    setAssignedDoctorId(e.target.value)
+  }
+>
+  <option value="">
+    Select Doctor
+  </option>
+
   {doctors.map((doc) => (
     <option key={doc._id} value={doc._id}>
-      {doc.userId?.name} ({doc.specialty?.name || "No Specialty"})
+      {doc.userId?.name}
     </option>
   ))}
 </select>
