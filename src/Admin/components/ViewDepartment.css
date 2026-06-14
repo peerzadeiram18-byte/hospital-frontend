@@ -1,129 +1,220 @@
+/* =========================
+   View Department Page
+========================= */
+
 .view-department-container {
   display: flex;
   justify-content: center;
-  padding: 2rem;
+  padding: 30px 20px;
   min-height: 100vh;
+  background: #F7F3EE;
 }
 
 .view-department-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 6px; /* slight rounding */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 900px;
+  max-width: 1100px;
+  background: #FFFDF9;
+  border-radius: 16px;
+  padding: 25px;
+  border: 1px solid #E8DCCB;
+  box-shadow: 0 8px 24px rgba(139, 94, 60, 0.08);
 }
+
+/* =========================
+   Title
+========================= */
 
 .view-title {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
   text-align: center;
-  color: #1976d2;
+  font-size: 28px;
+  font-weight: 700;
+  color: #8B5E3C;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
 }
 
+/* =========================
+   Messages
+========================= */
+
 .error-text {
-  color: red;
   text-align: center;
+  color: #dc2626;
+  font-weight: 600;
+  margin: 20px 0;
 }
 
 .no-data {
   text-align: center;
+  color: #6B4F3A;
   font-style: italic;
+  padding: 20px;
+  font-size: 16px;
 }
+
+/* =========================
+   Table Wrapper
+========================= */
 
 .table-wrapper {
   overflow-x: auto;
+  border-radius: 12px;
 }
+
+/* =========================
+   Table
+========================= */
 
 .department-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
-  font-size: 0.95rem;
-}
-
-.department-table th,
-.department-table td {
-  border: 1px solid #ddd;
-  padding: 0.75rem;
-  text-align: left;
+  min-width: 700px;
+  background: #FFFDF9;
 }
 
 .department-table th {
-  background-color: #1976d2;
-  color: white;
+  background: #8B5E3C;
+  color: #FFFDF9;
+  padding: 14px;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid #CDB79E;
 }
 
-.department-table tr:nth-child(even) {
-  background-color: #f9f9f9;
+.department-table td {
+  padding: 13px;
+  border: 1px solid #E8DCCB;
+  color: #4A3426;
+  font-size: 14px;
 }
 
-@media (max-width: 600px) {
-  .view-title {
-    font-size: 1.25rem;
-  }
+/* Alternate Rows */
 
-  .department-table th,
-  .department-table td {
-    font-size: 0.85rem;
-    padding: 0.5rem;
-  }
-
-  .view-department-card {
-    padding: 1rem;
-  }
+.department-table tbody tr:nth-child(even) {
+  background: #F7F3EE;
 }
-/* Bulk Upload Section */
+
+.department-table tbody tr:nth-child(odd) {
+  background: #FFFDF9;
+}
+
+/* Hover Effect */
+
+.department-table tbody tr:hover {
+  background: #F1E6D8;
+  transition: 0.2s ease;
+}
+
+/* =========================
+   Bulk Upload Section
+========================= */
+
 .bulk-upload-container {
-  background: #ffffff;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  background: #FFFDF9;
+  border: 1px solid #E8DCCB;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 12px rgba(139, 94, 60, 0.06);
 }
 
 .bulk-upload-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #374151;
-  margin-bottom: 0.75rem;
+  color: #8B5E3C;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
 }
 
 .bulk-upload-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .bulk-upload-input {
-  border: 1px solid #d1d5db;
-  padding: 0.4rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  background-color: #f9fafb;
+  flex: 1;
+  min-width: 250px;
+  border: 1px solid #D8C3A5;
+  border-radius: 8px;
+  padding: 10px;
+  background: #FFFDF9;
+  color: #4A3426;
   cursor: pointer;
 }
 
-.bulk-upload-input:hover {
-  background-color: #f3f4f6;
+/* =========================
+   Upload Button
+========================= */
+
+.bulk-upload-actions button {
+  background: #C89B3C;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 22px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* 📱 Mobile Responsive Fix */
-@media (max-width: 600px) {
+.bulk-upload-actions button:hover {
+  background: #B8862B;
+  transform: translateY(-1px);
+}
+
+/* =========================
+   Scrollbar
+========================= */
+
+.table-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: #F7F3EE;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #C89B3C;
+  border-radius: 10px;
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 768px) {
+  .view-department-container {
+    padding: 15px;
+  }
+
+  .view-department-card {
+    padding: 15px;
+  }
+
+  .view-title {
+    font-size: 22px;
+  }
+
+  .department-table th,
+  .department-table td {
+    padding: 10px;
+    font-size: 13px;
+  }
+
   .bulk-upload-actions {
     flex-direction: column;
     align-items: stretch;
-    gap: 0.75rem;
   }
 
   .bulk-upload-input {
     width: 100%;
-    font-size: 1rem;
+    min-width: auto;
   }
 
   .bulk-upload-actions button {
     width: 100%;
   }
 }
-

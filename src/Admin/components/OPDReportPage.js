@@ -559,7 +559,7 @@ if (
                 <tbody>
                   {centralData.length === 0 ? (
                     <tr>
-                      <td colSpan="5">
+                      <td colSpan="6">
                         No data found
                       </td>
                     </tr>

@@ -545,9 +545,12 @@ const closeDoctorMenu = () => setDoctorAnchor(null);
                 width: '90%',
                 padding: '8px 10px',
                 borderRadius: '6px',
-                border: '1px solid #d1d5db',
+                // border: '1px solid #d1d5db',
+                border: '1px solid #D7C4AE',
                 marginBottom: '10px',
-                fontSize: '14px'
+                fontSize: '14px',
+                backgroundColor:'#FFFFFF',
+                color:'#5A4632'
               }}
             />
 
@@ -623,7 +626,11 @@ const styles = {
     left: 0,
     right: 0,
     height: '50px',
-    backgroundColor: '#0284c7',
+    // backgroundColor: '#0284c7',
+    // color: '#fff',
+
+      backgroundColor: '#B58B61', // wood color
+
     color: '#fff',
     display: 'flex',
     alignItems: 'center',
@@ -641,12 +648,14 @@ const styles = {
   },
   sidebar: {
     width: '260px',
-    color: '#111827',
+    // color: '#111827',
     display: 'flex',
     flexDirection: 'column',
     boxShadow: '2px 0 6px rgba(0,0,0,0.05)',
     padding: '20px 15px',
-    backgroundColor: '#ffffff',
+    // backgroundColor: '#ffffff',
+    backgroundColor: '#FAF7F2',
+color: '#5A4632',
     height: '100vh',
     overflowY: 'auto',
     marginTop: '50px',
@@ -662,7 +671,8 @@ const styles = {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(0,0,0,0.3)',
+    // backgroundColor: 'rgba(0,0,0,0.3)',
+    backgroundColor: 'rgba(90,70,50,0.15)',
     zIndex: 999,
   },
 
@@ -674,7 +684,9 @@ const styles = {
   },
   hr: {
     border: 'none',
-    borderBottom: '1px solid #d1d5db',
+    // borderBottom: '1px solid #d1d5db',
+
+    borderBottom: '1px solid #D7C4AE',
     margin: '10px 0',
     width: '100%',
   },
@@ -682,12 +694,15 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     gap: '8px',
-    backgroundColor: '#f9fafb',
+    // backgroundColor: '#f9fafb',
+
+    backgroundColor: '#FFFDF9',
+borderLeft: '3px solid #B58B61',
     borderRadius: '6px',
     marginTop: '6px',
     padding: '8px 0px 8px 12px',
     marginLeft: '6px',
-    borderLeft: '3px solid #0284c7',
+    // borderLeft: '3px solid #0284c7',
     width: 'calc(100% - 10px)',
   },
   nestedDropdown: {
@@ -701,8 +716,11 @@ const styles = {
   logoutButton: {
     marginTop: 'auto',
     padding: '10px 15px',
-    backgroundColor: '#0284c7',
-    color: '#ffffff',
+    // backgroundColor: '#0284c7',
+    // color: '#ffffff',
+
+    backgroundColor: '#B58B61',
+color: '#ffffff',
     border: 'none',
     borderRadius: '6px',
     fontSize: '14px',
@@ -716,7 +734,9 @@ const styles = {
   main: {
     flex: 1,
     padding: '70px 15px 30px 15px',
-    background: '#f3f4f6',
+    // background: '#f3f4f6',
+
+    background: '#F5EFE6',
     overflowY: 'auto',
     height: '100vh',
     marginLeft: '0px',
@@ -726,7 +746,8 @@ const styles = {
 const linkStyle = {
   padding: '10px 16px',
   textDecoration: 'none',
-  color: '#1f2937',
+  // color: '#1f2937',
+  color: '#5A4632',
   fontWeight: '600',
   width: '100%',
   textAlign: 'left',
@@ -740,13 +761,22 @@ const linkStyle = {
   justifyContent: 'space-between',
 };
 
+// const activeLinkStyle = {
+//   ...linkStyle,
+//   backgroundColor: '#e0f2fe',
+//   color: '#0284c7',
+//   fontWeight: '700',
+// };
+
+
+
 const activeLinkStyle = {
   ...linkStyle,
-  backgroundColor: '#e0f2fe',
-  color: '#0284c7',
+  backgroundColor: '#EADBC8',
+  color: '#7A5C3E',
   fontWeight: '700',
+  borderLeft: '4px solid #B58B61',
 };
-
 const dropdownLinkStyle = {
   ...linkStyle,
   fontSize: '14px',

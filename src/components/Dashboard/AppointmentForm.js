@@ -1,224 +1,599 @@
-import React, {
-useState,
-useEffect
-} from "react";
+// import React, {
+// useState,
+// useEffect
+// } from "react";
 
+// import axios from "axios";
+
+// import {
+// toast,
+// ToastContainer
+// } from "react-toastify";
+
+// const AppointmentForm = () => {
+
+// const BASE_URL =
+// process.env.REACT_APP_BASE_URL;
+
+// const [form, setForm] =
+// useState({
+
+//   fullName: "",
+//   age: "",
+//   gender: "",
+//   contactNumber: "",
+//   address: "",
+
+//   specialtyId: "",
+//   doctorId: "",
+
+//   appointmentDate: "",
+//   slotTime: ""
+
+// });
+
+
+// const [specialties, setSpecialties] =
+// useState([]);
+
+// const [doctors, setDoctors] =
+// useState([]);
+
+// const [existingPatients,
+// setExistingPatients] =
+// useState([]);
+
+// const [selectedPatient,
+// setSelectedPatient] =
+// useState(null);
+
+// const [searchTerm,
+// setSearchTerm] =
+// useState("");
+
+// // FETCH SPECIALTIES
+// useEffect(() => {
+
+
+// fetchSpecialties();
+
+// }, []);
+
+// const fetchSpecialties =
+// async () => {
+
+
+// try {
+
+//   const token =
+//     localStorage.getItem("jwt");
+
+//   const res =
+//     await axios.get(
+
+//       `${BASE_URL}/api/receptionist/specialties`,
+
+//       {
+//         headers: {
+//           Authorization:
+//             `Bearer ${token}`
+//         }
+//       }
+//     );
+
+//   setSpecialties(
+//     res.data.specialties || []
+//   );
+
+// } catch (err) {
+
+//   console.log(err);
+// }
+
+
+// };
+
+// // SEARCH PATIENT
+// const searchPatients =
+// async (value) => {
+
+
+// setSearchTerm(value);
+
+// if (!value) {
+//   setExistingPatients([]);
+//   return;
+// }
+
+// try {
+
+//   const token =
+//     localStorage.getItem("jwt");
+
+//   const res =
+//     await axios.get(
+
+//       `${BASE_URL}/api/receptionist/patients/search?query=${value}`,
+
+//       {
+//         headers: {
+//           Authorization:
+//             `Bearer ${token}`
+//         }
+//       }
+//     );
+
+//   setExistingPatients(
+//     res.data.patients || []
+//   );
+
+// } catch (err) {
+
+//   console.log(err);
+// }
+
+
+// };
+
+// // FETCH DOCTORS
+// const fetchDoctors =
+// async (specialtyId) => {
+
+
+// setForm((p) => ({
+//   ...p,
+//   specialtyId,
+//   doctorId: ""
+// }));
+
+// try {
+
+//   const token =
+//     localStorage.getItem("jwt");
+
+//   const res =
+//     await axios.post(
+
+//       `${BASE_URL}/api/receptionist/doctors`,
+
+//       {
+//         specialtyId
+//       },
+
+//       {
+//         headers: {
+//           Authorization:
+//             `Bearer ${token}`
+//         }
+//       }
+//     );
+
+//   setDoctors(
+//     res.data.doctors || []
+//   );
+
+// } catch (err) {
+
+//   console.log(err);
+// }
+
+// };
+
+// // CHANGE
+// const handleChange =
+// (e) => {
+
+// const {
+//   name,
+//   value
+// } = e.target;
+
+// setForm((p) => ({
+//   ...p,
+//   [name]: value
+// }));
+
+// };
+
+// // SUBMIT
+// const handleSubmit =
+// async (e) => {
+
+// e.preventDefault();
+
+// try {
+
+//   const token =
+//     localStorage.getItem("jwt");
+
+//   const payload = {
+
+//     existingPatientId:
+//       selectedPatient?._id,
+
+//     ...form
+//   };
+
+//   await axios.post(
+
+//     `${BASE_URL}/api/appointments/create`,
+
+//     payload,
+
+//     {
+//       headers: {
+//         Authorization:
+//           `Bearer ${token}`
+//       }
+//     }
+//   );
+
+//   toast.success(
+//     "Appointment booked"
+//   );
+
+//   setForm({
+
+//     fullName: "",
+//     age: "",
+//     gender: "",
+//     contactNumber: "",
+//     address: "",
+
+//     specialtyId: "",
+//     doctorId: "",
+
+//     appointmentDate: "",
+//     slotTime: ""
+
+//   });
+
+// } catch (err) {
+
+//   toast.error(
+//     err.response?.data?.message
+//   );
+// }
+
+// };
+
+// return (
+
+// <div className="container">
+
+//   <h2>
+//     Appointment Booking
+//   </h2>
+
+//   <form onSubmit={handleSubmit}>
+
+//     <input
+//       type="text"
+//       placeholder="Search Patient"
+//       value={searchTerm}
+//       onChange={(e) =>
+//         searchPatients(e.target.value)
+//       }
+//     />
+
+//     {
+//       existingPatients.map((p) => (
+
+//         <div
+//           key={p._id}
+
+//           onClick={() => {
+
+//             setSelectedPatient(p);
+
+//             setForm((prev) => ({
+//               ...prev,
+
+//               fullName:
+//                 p.fullName,
+
+//               age:
+//                 p.age,
+
+//               gender:
+//                 p.gender,
+
+//               contactNumber:
+//                 p.contactNumber,
+
+//               address:
+//                 p.address
+//             }));
+
+//             setExistingPatients([]);
+//           }}
+//         >
+
+//           {p.fullName}
+//           ({p.patientId})
+
+//         </div>
+//       ))
+//     }
+
+//     <input
+//       name="fullName"
+//       placeholder="Full Name"
+//       value={form.fullName}
+//       onChange={handleChange}
+//     />
+
+//     <input
+//       name="age"
+//       placeholder="Age"
+//       value={form.age}
+//       onChange={handleChange}
+//     />
+
+//     <select
+//       name="gender"
+//       value={form.gender}
+//       onChange={handleChange}
+//     >
+
+//       <option value="">
+//         Gender
+//       </option>
+
+//       <option>
+//         Male
+//       </option>
+
+//       <option>
+//         Female
+//       </option>
+
+//     </select>
+
+//     <input
+//       name="contactNumber"
+//       placeholder="Contact"
+//       value={form.contactNumber}
+//       onChange={handleChange}
+//     />
+
+//     <input
+//       name="address"
+//       placeholder="Address"
+//       value={form.address}
+//       onChange={handleChange}
+//     />
+
+//     <select
+//       value={form.specialtyId}
+//       onChange={(e) =>
+//         fetchDoctors(
+//           e.target.value
+//         )
+//       }
+//     >
+
+//       <option value="">
+//         Select Specialty
+//       </option>
+
+//       {
+//         specialties.map((sp) => (
+
+//           <option
+//             key={sp._id}
+//             value={sp._id}
+//           >
+//             {sp.name}
+//           </option>
+//         ))
+//       }
+
+//     </select>
+
+//     <select
+//       name="doctorId"
+//       value={form.doctorId}
+//       onChange={handleChange}
+//     >
+
+//       <option value="">
+//         Select Doctor
+//       </option>
+
+//       {
+//         doctors.map((doc) => (
+
+//           <option
+//             key={doc._id}
+//             value={doc._id}
+//           >
+//             {doc.userId?.name}
+//           </option>
+//         ))
+//       }
+
+//     </select>
+
+//     <input
+//       type="date"
+//       name="appointmentDate"
+//       value={form.appointmentDate}
+//       onChange={handleChange}
+//     />
+
+//     <input
+//       type="time"
+//       name="slotTime"
+//       value={form.slotTime}
+//       onChange={handleChange}
+//     />
+
+//     <button type="submit">
+//       Book Appointment
+//     </button>
+
+//   </form>
+
+//   <ToastContainer />
+
+// </div>
+
+// );
+// };
+
+// export default AppointmentForm;
+
+
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-
 import {
-toast,
-ToastContainer
+  toast,
+  ToastContainer
 } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./AppointmentForm.css";
 
 const AppointmentForm = () => {
 
-const BASE_URL =
-process.env.REACT_APP_BASE_URL;
+  const BASE_URL =
+    process.env.REACT_APP_BASE_URL;
 
-const [form, setForm] =
-useState({
+  const [form, setForm] =
+    useState({
+      fullName: "",
+      age: "",
+      gender: "",
+      contactNumber: "",
+      address: "",
+      specialtyId: "",
+      doctorId: "",
+      appointmentDate: "",
+      slotTime: ""
+    });
 
-  fullName: "",
-  age: "",
-  gender: "",
-  contactNumber: "",
-  address: "",
+  const [specialties,
+    setSpecialties] = useState([]);
 
-  specialtyId: "",
-  doctorId: "",
+  const [doctors,
+    setDoctors] = useState([]);
 
-  appointmentDate: "",
-  slotTime: ""
+  const [existingPatients,
+    setExistingPatients] =
+    useState([]);
 
-});
+  const [selectedPatient,
+    setSelectedPatient] =
+    useState(null);
 
+  const [searchTerm,
+    setSearchTerm] =
+    useState("");
 
-const [specialties, setSpecialties] =
-useState([]);
+  useEffect(() => {
+    fetchSpecialties();
+  }, []);
 
-const [doctors, setDoctors] =
-useState([]);
+  // FETCH SPECIALTY
+  const fetchSpecialties =
+    async () => {
+      try {
 
-const [existingPatients,
-setExistingPatients] =
-useState([]);
+        const token =
+          localStorage.getItem("jwt");
 
-const [selectedPatient,
-setSelectedPatient] =
-useState(null);
+        const res =
+          await axios.get(
+            `${BASE_URL}/api/receptionist/specialties`,
+            {
+              headers: {
+                Authorization:
+                  `Bearer ${token}`
+              }
+            }
+          );
 
-const [searchTerm,
-setSearchTerm] =
-useState("");
+        setSpecialties(
+          res.data.specialties || []
+        );
 
-// FETCH SPECIALTIES
-useEffect(() => {
-
-
-fetchSpecialties();
-
-}, []);
-
-const fetchSpecialties =
-async () => {
-
-
-try {
-
-  const token =
-    localStorage.getItem("jwt");
-
-  const res =
-    await axios.get(
-
-      `${BASE_URL}/api/receptionist/specialties`,
-
-      {
-        headers: {
-          Authorization:
-            `Bearer ${token}`
-        }
+      } catch (err) {
+        console.log(err);
       }
-    );
+    };
 
-  setSpecialties(
-    res.data.specialties || []
-  );
+  // SEARCH PATIENT
+  const searchPatients =
+    async (value) => {
 
-} catch (err) {
+      setSearchTerm(value);
 
-  console.log(err);
-}
-
-
-};
-
-// SEARCH PATIENT
-const searchPatients =
-async (value) => {
-
-
-setSearchTerm(value);
-
-if (!value) {
-  setExistingPatients([]);
-  return;
-}
-
-try {
-
-  const token =
-    localStorage.getItem("jwt");
-
-  const res =
-    await axios.get(
-
-      `${BASE_URL}/api/receptionist/patients/search?query=${value}`,
-
-      {
-        headers: {
-          Authorization:
-            `Bearer ${token}`
-        }
+      if (!value) {
+        setExistingPatients([]);
+        return;
       }
-    );
 
-  setExistingPatients(
-    res.data.patients || []
-  );
+      try {
 
-} catch (err) {
+        const token =
+          localStorage.getItem("jwt");
 
-  console.log(err);
-}
+        const res =
+          await axios.get(
+            `${BASE_URL}/api/receptionist/patients/search?query=${value}`,
+            {
+              headers: {
+                Authorization:
+                  `Bearer ${token}`
+              }
+            }
+          );
 
+        setExistingPatients(
+          res.data.patients || []
+        );
 
-};
-
-// FETCH DOCTORS
-const fetchDoctors =
-async (specialtyId) => {
-
-
-setForm((p) => ({
-  ...p,
-  specialtyId,
-  doctorId: ""
-}));
-
-try {
-
-  const token =
-    localStorage.getItem("jwt");
-
-  const res =
-    await axios.post(
-
-      `${BASE_URL}/api/receptionist/doctors`,
-
-      {
-        specialtyId
-      },
-
-      {
-        headers: {
-          Authorization:
-            `Bearer ${token}`
-        }
+      } catch (err) {
+        console.log(err);
       }
-    );
+    };
 
-  setDoctors(
-    res.data.doctors || []
-  );
+  // FETCH DOCTORS
+  const fetchDoctors =
+    async (specialtyId) => {
 
-} catch (err) {
+      setForm((p) => ({
+        ...p,
+        specialtyId,
+        doctorId: ""
+      }));
 
-  console.log(err);
-}
+      try {
 
-};
+        const token =
+          localStorage.getItem("jwt");
 
-// CHANGE
-const handleChange =
-(e) => {
+        // const res =
+        //   await axios.post(
+        //     `${BASE_URL}/api/receptionist/doctors`,
+        //     {
+        //       specialtyId
+        //     },
+        //     {
+        //       headers: {
+        //         Authorization:
+        //           `Bearer ${token}`
+        //       }
+        //     }
+        //   );
 
-const {
-  name,
-  value
-} = e.target;
 
-setForm((p) => ({
-  ...p,
-  [name]: value
-}));
 
-};
 
-// SUBMIT
-const handleSubmit =
-async (e) => {
+        const res =
+  await axios.get(
 
-e.preventDefault();
-
-try {
-
-  const token =
-    localStorage.getItem("jwt");
-
-  const payload = {
-
-    existingPatientId:
-      selectedPatient?._id,
-
-    ...form
-  };
-
-  await axios.post(
-
-    `${BASE_URL}/api/appointments/create`,
-
-    payload,
+    `${BASE_URL}/api/doctor/by-specialty/${specialtyId}`,
 
     {
       headers: {
@@ -228,218 +603,298 @@ try {
     }
   );
 
-  toast.success(
-    "Appointment booked"
-  );
 
-  setForm({
 
-    fullName: "",
-    age: "",
-    gender: "",
-    contactNumber: "",
-    address: "",
+  
+        setDoctors(
+          res.data.doctors || []
+        );
 
-    specialtyId: "",
-    doctorId: "",
-
-    appointmentDate: "",
-    slotTime: ""
-
-  });
-
-} catch (err) {
-
-  toast.error(
-    err.response?.data?.message
-  );
-}
-
-};
-
-return (
-
-<div className="container">
-
-  <h2>
-    Appointment Booking
-  </h2>
-
-  <form onSubmit={handleSubmit}>
-
-    <input
-      type="text"
-      placeholder="Search Patient"
-      value={searchTerm}
-      onChange={(e) =>
-        searchPatients(e.target.value)
+      } catch (err) {
+        console.log(err);
       }
-    />
+    };
 
-    {
-      existingPatients.map((p) => (
+  const handleChange =
+    (e) => {
 
-        <div
-          key={p._id}
+      const {
+        name,
+        value
+      } = e.target;
 
-          onClick={() => {
+      setForm((p) => ({
+        ...p,
+        [name]: value
+      }));
+    };
 
-            setSelectedPatient(p);
+  // SUBMIT
+  const handleSubmit =
+    async (e) => {
 
-            setForm((prev) => ({
-              ...prev,
+      e.preventDefault();
 
-              fullName:
-                p.fullName,
+      try {
 
-              age:
-                p.age,
+        const token =
+          localStorage.getItem("jwt");
 
-              gender:
-                p.gender,
+        const payload = {
+          existingPatientId:
+            selectedPatient?._id,
+          ...form
+        };
 
-              contactNumber:
-                p.contactNumber,
+        await axios.post(
+          `${BASE_URL}/api/appointments/create`,
+          payload,
+          {
+            headers: {
+              Authorization:
+                `Bearer ${token}`
+            }
+          }
+        );
 
-              address:
-                p.address
-            }));
+        toast.success(
+          "Appointment Booked Successfully"
+        );
 
-            setExistingPatients([]);
-          }}
+        setForm({
+          fullName: "",
+          age: "",
+          gender: "",
+          contactNumber: "",
+          address: "",
+          specialtyId: "",
+          doctorId: "",
+          appointmentDate: "",
+          slotTime: ""
+        });
+
+        setSearchTerm("");
+        setSelectedPatient(null);
+
+      } catch (err) {
+
+        toast.error(
+          err.response?.data?.message ||
+          "Booking failed"
+        );
+      }
+    };
+
+  return (
+
+    <div className="appointment-page">
+
+      <div className="appointment-card">
+
+        <h2>
+          Appointment Booking
+        </h2>
+
+        <form
+          onSubmit={handleSubmit}
+          className="appointment-form"
         >
 
-          {p.fullName}
-          ({p.patientId})
+          {/* Search */}
+          <div className="full-width">
 
-        </div>
-      ))
-    }
+            <input
+              type="text"
+              placeholder="Search Patient / ID / Contact"
+              value={searchTerm}
+              onChange={(e) =>
+                searchPatients(
+                  e.target.value
+                )
+              }
+            />
 
-    <input
-      name="fullName"
-      placeholder="Full Name"
-      value={form.fullName}
-      onChange={handleChange}
-    />
+            {
+              existingPatients.length >
+              0 && (
 
-    <input
-      name="age"
-      placeholder="Age"
-      value={form.age}
-      onChange={handleChange}
-    />
+                <div className="patient-dropdown">
 
-    <select
-      name="gender"
-      value={form.gender}
-      onChange={handleChange}
-    >
+                  {
+                    existingPatients.map(
+                      (p) => (
 
-      <option value="">
-        Gender
-      </option>
+                        <div
+                          key={p._id}
+                          className="patient-item"
+                          onClick={() => {
 
-      <option>
-        Male
-      </option>
+                            setSelectedPatient(p);
 
-      <option>
-        Female
-      </option>
+                            setForm(
+                              (prev) => ({
+                                ...prev,
+                                fullName:
+                                  p.fullName,
+                                age:
+                                  p.age,
+                                gender:
+                                  p.gender,
+                                contactNumber:
+                                  p.contactNumber,
+                                address:
+                                  p.address
+                              })
+                            );
 
-    </select>
+                            setExistingPatients([]);
+                            setSearchTerm(
+                              p.fullName
+                            );
+                          }}
+                        >
 
-    <input
-      name="contactNumber"
-      placeholder="Contact"
-      value={form.contactNumber}
-      onChange={handleChange}
-    />
+                          <strong>
+                            {p.fullName}
+                          </strong>
 
-    <input
-      name="address"
-      placeholder="Address"
-      value={form.address}
-      onChange={handleChange}
-    />
+                          <br />
 
-    <select
-      value={form.specialtyId}
-      onChange={(e) =>
-        fetchDoctors(
-          e.target.value
-        )
-      }
-    >
+                          {p.patientId}
 
-      <option value="">
-        Select Specialty
-      </option>
+                        </div>
+                      )
+                    )
+                  }
 
-      {
-        specialties.map((sp) => (
+                </div>
+              )
+            }
 
-          <option
-            key={sp._id}
-            value={sp._id}
+          </div>
+
+          <input
+            name="fullName"
+            placeholder="Full Name"
+            value={form.fullName}
+            onChange={handleChange}
+          />
+
+          <input
+            name="age"
+            placeholder="Age"
+            value={form.age}
+            onChange={handleChange}
+          />
+
+          <select
+            name="gender"
+            value={form.gender}
+            onChange={handleChange}
           >
-            {sp.name}
-          </option>
-        ))
-      }
+            <option value="">
+              Gender
+            </option>
+            <option value="Male">
+              Male
+            </option>
+            <option value="Female">
+              Female
+            </option>
+          </select>
 
-    </select>
+          <input
+            name="contactNumber"
+            placeholder="Contact"
+            value={form.contactNumber}
+            onChange={handleChange}
+          />
 
-    <select
-      name="doctorId"
-      value={form.doctorId}
-      onChange={handleChange}
-    >
+          <input
+            name="address"
+            placeholder="Address"
+            value={form.address}
+            onChange={handleChange}
+          />
 
-      <option value="">
-        Select Doctor
-      </option>
-
-      {
-        doctors.map((doc) => (
-
-          <option
-            key={doc._id}
-            value={doc._id}
+          <select
+            value={form.specialtyId}
+            onChange={(e) =>
+              fetchDoctors(
+                e.target.value
+              )
+            }
           >
-            {doc.userId?.name}
-          </option>
-        ))
-      }
+            <option value="">
+              Select Specialty
+            </option>
 
-    </select>
+            {
+              specialties.map(
+                (sp) => (
+                  <option
+                    key={sp._id}
+                    value={sp._id}
+                  >
+                    {sp.name}
+                  </option>
+                )
+              )
+            }
+          </select>
 
-    <input
-      type="date"
-      name="appointmentDate"
-      value={form.appointmentDate}
-      onChange={handleChange}
-    />
+          <select
+            name="doctorId"
+            value={form.doctorId}
+            onChange={handleChange}
+          >
+            <option value="">
+              Select Doctor
+            </option>
 
-    <input
-      type="time"
-      name="slotTime"
-      value={form.slotTime}
-      onChange={handleChange}
-    />
+            {
+              doctors.map(
+                (doc) => (
+                  <option
+                    key={doc._id}
+                    value={doc._id}
+                  >
+                    {doc.userId?.name}
+                  </option>
+                )
+              )
+            }
+          </select>
 
-    <button type="submit">
-      Book Appointment
-    </button>
+          <input
+            type="date"
+            name="appointmentDate"
+            value={form.appointmentDate}
+            onChange={handleChange}
+          />
 
-  </form>
+          <input
+            type="time"
+            name="slotTime"
+            value={form.slotTime}
+            onChange={handleChange}
+          />
 
-  <ToastContainer />
+          <button
+            type="submit"
+            className="book-btn"
+          >
+            Book Appointment
+          </button>
 
-</div>
+        </form>
 
-);
+      </div>
+
+      <ToastContainer />
+
+    </div>
+  );
 };
 
 export default AppointmentForm;

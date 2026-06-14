@@ -1,84 +1,170 @@
+/* Main Container */
 .manual-charge-container {
-  padding: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
+  min-height: 100vh;
+  padding: 25px;
+  background: #f7f3ee;
+
+    display: flex;
+  flex-direction: column;
+  align-items: center;   /* horizontal center */
 }
 
+/* Heading */
 .manual-charge-title {
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #1e3a8a;
-  margin-bottom: 16px;
   text-align: center;
+  color: #8b5e3c;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
 }
 
+/* Loading / No Data */
 .status-message {
   text-align: center;
-  font-style: italic;
+  color: #6b4f3b;
   font-size: 1rem;
-  margin: 12px 0;
-  color: #444;
+  padding: 20px;
 }
 
 .error-message {
-  color: red;
   text-align: center;
-  font-style: italic;
+  color: #dc2626;
   font-size: 1rem;
-  margin: 12px 0;
+  padding: 20px;
+  font-weight: 600;
 }
 
+/* Table Card */
 .table-wrapper {
+  background: #fffdf9;
+  border-radius: 16px;
+  border: 1px solid #e8dccb;
+  box-shadow: 0 6px 16px rgba(139, 94, 60, 0.1);
   overflow-x: auto;
+  padding: 10px;
 }
 
+/* Table */
 .manual-charge-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 16px;
-  min-width: 600px;
+  min-width: 800px;
 }
 
-.manual-charge-table th,
-.manual-charge-table td {
-  border: 1px solid #ccc;
-  padding: 10px;
-  background-color: #f8f8f8;
+/* Header */
+.manual-charge-table th {
+  background: #8b5e3c;
+  color: white;
+  padding: 14px;
   text-align: left;
   font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
 }
 
-.manual-charge-table th {
-  background-color: #e2e8f0;
-  color: #333;
+/* Body */
+.manual-charge-table td {
+  padding: 14px;
+  border-bottom: 1px solid #f0e5d8;
+  color: #4a3426;
+  font-size: 0.95rem;
+  vertical-align: middle;
 }
 
-/* Responsive Tweaks */
+/* Alternate Rows */
+.manual-charge-table tbody tr:nth-child(even) {
+  background: #faf6f1;
+}
+
+/* Hover Effect */
+.manual-charge-table tbody tr:hover {
+  background: #f3ebe2;
+  transition: 0.3s;
+}
+
+/* First Column */
+.manual-charge-table td:first-child {
+  font-weight: 600;
+  color: #8b5e3c;
+}
+
+/* Price Column */
+.price-column {
+  font-weight: 700;
+  color: #16a34a;
+}
+
+/* Category Badge */
+.category-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: #f4e7d5;
+  color: #8b5e3c;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Description */
+.description-cell {
+  max-width: 250px;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* Tablet */
 @media (max-width: 768px) {
   .manual-charge-container {
-    padding: 12px;
+    padding: 15px;
   }
 
   .manual-charge-title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 
   .manual-charge-table th,
   .manual-charge-table td {
+    padding: 12px;
     font-size: 0.9rem;
-    padding: 8px;
   }
 }
-@media (max-width: 580px) {
-  .manual-charge-table tr {
-    min-height: 60px;
-    height: 70px; /* Enforces taller row height */
+
+/* Mobile */
+@media (max-width: 600px) {
+  .manual-charge-container {
+    padding: 10px;
+  }
+
+  .manual-charge-title {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+
+  .table-wrapper {
+    border-radius: 10px;
+    padding: 5px;
+  }
+
+  .manual-charge-table {
+    min-width: 650px;
   }
 
   .manual-charge-table th,
   .manual-charge-table td {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    line-height: 1.4;
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+  .manual-charge-table th,
+  .manual-charge-table td {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+
+  .manual-charge-title {
+    font-size: 1.2rem;
   }
 }

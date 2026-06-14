@@ -108,31 +108,70 @@ const AddSpeciality = () => {
 
 
   return (
+    // <div
+    //   style={{
+    //     maxWidth: "900px",
+    //     margin: "0 auto",
+    //     padding: "20px",
+    //     fontFamily: "Arial, sans-serif",
+    //   }}
+    // >
+
+
     <div
-      style={{
-        maxWidth: "900px",
-        margin: "0 auto",
-        padding: "20px",
-        fontFamily: "Arial, sans-serif",
-      }}
-    >
-      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
+  style={{
+    maxWidth: "900px",
+    margin: "0 auto",
+    padding: "20px",
+    fontFamily: "Arial, sans-serif",
+    background: "#F7F3EE",
+    minHeight: "100vh",
+  }}
+>
+      {/* <h2 style={{ textAlign: "center", marginBottom: "20px" }}> */}
+
+      <h2
+  style={{
+    textAlign: "center",
+    marginBottom: "20px",
+    color: "#8B5E3C",
+    fontWeight: "700",
+  }}
+>
         Manage Specialties
       </h2>
 
       {/* Add Specialty Form */}
       <div
+        // style={{
+        //   padding: "15px",
+        //   border: "1px solid #ddd",
+        //   borderRadius: "8px",
+        //   marginBottom: "20px",
+        // }}
+
         style={{
-          padding: "15px",
-          border: "1px solid #ddd",
-          borderRadius: "8px",
-          marginBottom: "20px",
-        }}
+  padding: "20px",
+  background: "#FFFDF9",
+  border: "1px solid #E8DCCB",
+  borderRadius: "12px",
+  marginBottom: "20px",
+  boxShadow: "0 4px 12px rgba(139,94,60,0.08)",
+}}
       >
         <h3>Add Specialty</h3>
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
           <input
-            style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ccc" }}
+            // style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ccc" }}
+
+            style={{
+  padding: "10px",
+  borderRadius: "8px",
+  border: "1px solid #D8C3A5",
+  background: "#FFFDF9",
+  color: "#4A3426",
+}}
+
             placeholder="Specialty Name"
             value={name}
             onChange={(e) => {
@@ -143,7 +182,15 @@ const AddSpeciality = () => {
           {errors.name && <span style={{ color: "red", fontSize: "0.9rem" }}>{errors.name}</span>}
 
           <textarea
-            style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ccc" }}
+            // style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ccc" }}
+
+            style={{
+  padding: "10px",
+  borderRadius: "8px",
+  border: "1px solid #D8C3A5",
+  background: "#FFFDF9",
+  color: "#4A3426",
+}}
             placeholder="Description"
             value={description}
             onChange={(e) => {
@@ -157,7 +204,9 @@ const AddSpeciality = () => {
             type="submit"
             style={{
               padding: "10px",
-              background: "#007bff",
+              // background: "#007bff",
+
+              background: "#8B5E3C",
               color: "#fff",
               border: "none",
               borderRadius: "5px",
@@ -171,12 +220,21 @@ const AddSpeciality = () => {
 
       {/* Bulk Upload */}
       <div
+        // style={{
+        //   padding: "15px",
+        //   border: "1px solid #ddd",
+        //   borderRadius: "8px",
+        //   marginBottom: "20px",
+        // }}
+
         style={{
-          padding: "15px",
-          border: "1px solid #ddd",
-          borderRadius: "8px",
-          marginBottom: "20px",
-        }}
+  padding: "20px",
+  background: "#FFFDF9",
+  border: "1px solid #E8DCCB",
+  borderRadius: "12px",
+  marginBottom: "20px",
+  boxShadow: "0 4px 12px rgba(139,94,60,0.08)",
+}}
       >
         <h3>Bulk Upload Specialties</h3>
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -190,7 +248,8 @@ const AddSpeciality = () => {
             disabled={uploading}
             style={{
               padding: "10px",
-              background: uploading ? "#aaa" : "#28a745",
+              // background: uploading ? "#aaa" : "#28a745",
+              background: uploading ? "#B7A18B" : "#C89B3C",
               color: "#fff",
               border: "none",
               borderRadius: "5px",
@@ -202,48 +261,7 @@ const AddSpeciality = () => {
         </div>
       </div>
 
-      {/* Specialties List */}
-      <div
-        style={{
-          padding: "15px",
-          border: "1px solid #ddd",
-          borderRadius: "8px",
-          overflowX: "auto",
-        }}
-      >
-        <h3>Specialty List</h3>
-        {loading ? (
-          <p>Loading...</p>
-        ) : specialties.length === 0 ? (
-          <p>No specialties found.</p>
-        ) : (
-          <table
-            style={{
-              width: "100%",
-              borderCollapse: "collapse",
-              fontSize: "0.95rem",
-            }}
-          >
-            <thead>
-              <tr>
-                <th style={{ border: "1px solid #ccc", padding: "8px" }}>#</th>
-                <th style={{ border: "1px solid #ccc", padding: "8px" }}>Name</th>
-                <th style={{ border: "1px solid #ccc", padding: "8px" }}>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              {specialties.map((spec, i) => (
-                <tr key={spec._id}>
-                  <td style={{ border: "1px solid #ccc", padding: "8px" }}>{i + 1}</td>
-                  <td style={{ border: "1px solid #ccc", padding: "8px" }}>{spec.name}</td>
-                  <td style={{ border: "1px solid #ccc", padding: "8px" }}>{spec.description}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-      </div>
-
+ 
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
     </div>
   );

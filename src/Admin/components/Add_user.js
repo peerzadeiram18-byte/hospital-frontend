@@ -319,6 +319,10 @@ const AddUser = () => {
                   <option value="Pathologist">Pathologist</option>
                   <option value="Pharmacists">Pharmacists</option>
 
+
+                   {/* NEW */}
+                 <option value="Radiology">Radiology</option>
+
                   <option value="Other">Other</option>
                 </select>
                 <select name="department" value={form.department} onChange={handleChange}>

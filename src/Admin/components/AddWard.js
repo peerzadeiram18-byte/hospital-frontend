@@ -171,6 +171,15 @@ const AddWard = () => {
 
   // ================= UI =================
   return (
+
+      <div
+    style={{
+      background: "#F7F3EE",
+      minHeight: "100vh",
+      padding: "20px"
+    }}
+  >
+
     <div style={styles.card}>
       <h2 style={styles.heading}>Add Ward</h2>
 
@@ -282,36 +291,164 @@ const AddWard = () => {
         )}
       </div>
     </div>
+      </div>
+
   );
 };
 
 // ================= STYLES =================
+
+
 const styles = {
   card: {
-    maxWidth: "700px",
-    margin: "40px auto",
-    padding: "20px",
-    background: "#fff",
-    borderRadius: "10px",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
+    maxWidth: "850px",
+    margin: "30px auto",
+    padding: "25px",
+    background: "#FFFDF9",
+    border: "1px solid #E8DCCB",
+    borderRadius: "16px",
+    boxShadow: "0 6px 16px rgba(139,94,60,0.10)",
+    fontFamily: "Arial, sans-serif"
   },
-  heading: { textAlign: "center" },
-  field: { marginBottom: "15px" },
-  input: { width: "100%", padding: "10px" },
-  bedRow: { display: "flex", gap: "10px", marginBottom: "10px" },
-  bedInput: { flex: 2, padding: "10px" },
-  bedSelect: { flex: 1, padding: "10px" },
-  removeBtn: { background: "red", color: "#fff", padding: "5px" },
-  addBtn: { background: "#3498db", color: "#fff", padding: "8px 12px" },
-  submitBtn: { background: "green", color: "#fff", padding: "10px", width: "100%" },
-  message: { color: "green", textAlign: "center" },
-  error: { color: "red", fontSize: "0.8rem" },
+
+  heading: {
+    textAlign: "center",
+    color: "#8B5E3C",
+    marginBottom: "25px",
+    fontSize: "28px",
+    fontWeight: "700"
+  },
+
+  field: {
+    marginBottom: "18px"
+  },
+
+  input: {
+    width: "100%",
+    padding: "12px",
+    borderRadius: "8px",
+    border: "1px solid #D8C3A5",
+    background: "#FFFDF9",
+    color: "#4A3426",
+    fontSize: "15px",
+    outline: "none"
+  },
+
+  bedRow: {
+    display: "flex",
+    gap: "10px",
+    marginBottom: "10px",
+    alignItems: "center",
+    flexWrap: "wrap"
+  },
+
+  bedInput: {
+    flex: "2",
+    minWidth: "180px",
+    padding: "10px",
+    borderRadius: "8px",
+    border: "1px solid #D8C3A5",
+    background: "#FFFDF9",
+    color: "#4A3426"
+  },
+
+  bedSelect: {
+    flex: "1",
+    minWidth: "140px",
+    padding: "10px",
+    borderRadius: "8px",
+    border: "1px solid #D8C3A5",
+    background: "#FFFDF9",
+    color: "#4A3426"
+  },
+
+  removeBtn: {
+    background: "#A94438",
+    color: "#FFF",
+    border: "none",
+    borderRadius: "8px",
+    padding: "10px 14px",
+    cursor: "pointer",
+    fontWeight: "600"
+  },
+
+  addBtn: {
+    background: "#C89B3C",
+    color: "#FFF",
+    border: "none",
+    borderRadius: "8px",
+    padding: "10px 18px",
+    cursor: "pointer",
+    fontWeight: "600",
+    marginTop: "8px"
+  },
+
+  submitBtn: {
+    width: "100%",
+    padding: "12px",
+    background: "#8B5E3C",
+    color: "#FFF",
+    border: "none",
+    borderRadius: "8px",
+    cursor: "pointer",
+    fontWeight: "600",
+    fontSize: "15px",
+    marginTop: "10px"
+  },
+
+  message: {
+    background: "#F7F3EE",
+    border: "1px solid #D8C3A5",
+    borderRadius: "10px",
+    padding: "15px",
+    color: "#4A3426",
+    textAlign: "center",
+    cursor: "pointer",
+    fontWeight: "600"
+  },
+
+  error: {
+    color: "#C0392B",
+    fontSize: "13px",
+    display: "block",
+    marginTop: "4px"
+  },
+
   bulkBox: {
     marginTop: "30px",
-    padding: "15px",
-    border: "1px solid #ccc",
-    borderRadius: "10px"
+    padding: "20px",
+    background: "#FFFDF9",
+    border: "1px solid #E8DCCB",
+    borderRadius: "12px",
+    boxShadow: "0 4px 12px rgba(139,94,60,0.08)"
   }
 };
+// const styles = {
+//   card: {
+//     maxWidth: "700px",
+//     margin: "40px auto",
+//     padding: "20px",
+//     background: "#fff",
+//     borderRadius: "10px",
+//     boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
+//   },
+//   heading: { textAlign: "center" },
+//   field: { marginBottom: "15px" },
+//   input: { width: "100%", padding: "10px" },
+//   bedRow: { display: "flex", gap: "10px", marginBottom: "10px" },
+//   bedInput: { flex: 2, padding: "10px" },
+//   bedSelect: { flex: 1, padding: "10px" },
+//   removeBtn: { background: "red", color: "#fff", padding: "5px" },
+//   addBtn: { background: "#3498db", color: "#fff", padding: "8px 12px" },
+//   submitBtn: { background: "green", color: "#fff", padding: "10px", width: "100%" },
+//   message: { color: "green", textAlign: "center" },
+//   error: { color: "red", fontSize: "0.8rem" },
+//   bulkBox: {
+//     marginTop: "30px",
+//     padding: "15px",
+//     border: "1px solid #ccc",
+//     borderRadius: "10px"
+//   }
+// };
 
 export default AddWard;

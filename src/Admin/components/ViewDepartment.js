@@ -37,7 +37,7 @@ const ViewDepartment = () => {
         <h2 className="view-title">Departments</h2>
 
         {/* ✅ Bulk upload section */}
-        <BulkUploadDepartment onUploadSuccess={fetchDepartments} />
+        {/* <BulkUploadDepartment onUploadSuccess={fetchDepartments} /> */}
 
         {error && <p className="error-text">{error}</p>}
         {departments.length === 0 ? (

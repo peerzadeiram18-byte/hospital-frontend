@@ -19,6 +19,14 @@ const PatientForm = () => {
     relatives: [{ name: "", contactNumber: "", relationship: "" }]
   });
 
+//      const [appointmentMode, setAppointmentMode] =
+// useState(false);
+
+// const [appointmentDate, setAppointmentDate] =
+// useState("");
+
+// const [slotTime, setSlotTime] =
+// useState("");
   // 🔥 NEW STATES
   const [specialties, setSpecialties] = useState([]);
 const [selectedSpecialty, setSelectedSpecialty] = useState("");
@@ -31,6 +39,17 @@ const [existingPatients, setExistingPatients] = useState([]);
 const [selectedPatient, setSelectedPatient] = useState(null);
 const [searchTerm, setSearchTerm] = useState("");
   const [submittedData, setSubmittedData] = useState(null);
+
+
+
+  // Registration Type
+const [registrationType, setRegistrationType] = useState("visit");
+
+// Appointment States
+const [appointmentDate, setAppointmentDate] = useState("");
+const [slotTime, setSlotTime] = useState("");
+
+
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -161,34 +180,108 @@ if (
   return toast.error("Patient details missing");
 }
 
-    if (!visitType || !assignedDoctorId) {
-      return toast.error("Visit details required");
-    }
+    // if (!visitType || !assignedDoctorId) {
+    //   return toast.error("Visit details required");
+    // }
+
+    if (!assignedDoctorId) {
+  return toast.error("Doctor required");
+}
+
+if (
+  registrationType === "visit" &&
+  !visitType
+) {
+  return toast.error("Visit type required");
+}
+
+if (
+  registrationType === "appointment" &&
+  !appointmentDate
+) {
+  return toast.error(
+    "Appointment Date required"
+  );
+}
+
+if (
+  registrationType === "appointment" &&
+  !slotTime
+) {
+  return toast.error(
+    "Appointment Time required"
+  );
+}
 
     // if (visitType === "OPD" && (!amount || !isPaid)) {
     //   return toast.error("Payment required for OPD");
     // }
-    if (visitType === "OPD" && !amount) {
+
+    if (
+  registrationType === "visit" &&
+  visitType === "OPD" &&
+  !amount
+) {
   return toast.error("Payment amount required");
 }
+//     if (visitType === "OPD" && !amount) {
+//   return toast.error("Payment amount required");
+// }
 
     const token = localStorage.getItem("jwt");
 
+    // const payload = {
+    //     existingPatientId:
+    // selectedPatient?._id,
+
+    //   ...form,
+    //   aadhaarNumber: form.aadhaarNumber?.trim() || undefined,
+    //   relatives: form.relatives?.filter(r => r.name || r.contactNumber || r.relationship),
+
+    //   visitType,
+    //   assignedDoctorId,
+
+    //   payment: visitType === "OPD"
+    //     ? { amount: Number(amount), isPaid }
+    //     : undefined
+    // };
+
+
     const payload = {
-        existingPatientId:
+  existingPatientId:
     selectedPatient?._id,
 
-      ...form,
-      aadhaarNumber: form.aadhaarNumber?.trim() || undefined,
-      relatives: form.relatives?.filter(r => r.name || r.contactNumber || r.relationship),
+  ...form,
 
-      visitType,
-      assignedDoctorId,
+  aadhaarNumber:
+    form.aadhaarNumber?.trim() || undefined,
 
-      payment: visitType === "OPD"
-        ? { amount: Number(amount), isPaid }
-        : undefined
-    };
+  relatives:
+    form.relatives?.filter(
+      (r) =>
+        r.name ||
+        r.contactNumber ||
+        r.relationship
+    ),
+
+  visitType,
+  assignedDoctorId,
+
+  isAppointment:
+    registrationType === "appointment",
+
+  appointmentDate,
+  slotTime,
+
+  payment:
+    registrationType === "visit" &&
+    visitType === "OPD"
+      ? {
+          amount: Number(amount),
+          isPaid
+        }
+      : undefined
+};
 
     try {
       const res = await axios.post(
@@ -197,22 +290,53 @@ if (
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      toast.success("✅ Patient + Visit Created");
+      // toast.success("✅ Patient + Visit Created");
+
+      toast.success(
+  registrationType === "appointment"
+    ? "✅ Appointment Created"
+    : "✅ Patient + Visit Created"
+);
+
+
 localStorage.setItem("currentPatientId", res.data.patient.patientId);
 
     const selectedDoctor = doctors.find(
   (doc) => doc._id === assignedDoctorId
 );
 
+// setSubmittedData({
+//   patient: res.data.patient,
+//   visit: res.data.visit,
+//   doctorName: selectedDoctor?.userId?.name || "N/A",
+//   specialty: selectedDoctor?.specialty?.name || "N/A"
+// });
+
+
 setSubmittedData({
   patient: res.data.patient,
-  visit: res.data.visit,
+  visit: res.data.visit || null,
+  appointment: res.data.appointment || null,
   doctorName: selectedDoctor?.userId?.name || "N/A",
   specialty: selectedDoctor?.specialty?.name || "N/A"
 });
-    } catch (err) {
-      toast.error(err.response?.data?.message || "Failed");
-    }
+
+
+    } 
+    
+
+    catch (err) {
+  console.log("ERROR =>", err);
+  console.log("RESPONSE =>", err.response?.data);
+
+  toast.error(
+    err.response?.data?.message || "Failed"
+  );
+}
+    // catch (err) {
+    //   toast.error(err.response?.data?.message || "Failed");
+    // }
+
   };
  useEffect(() => {
 
@@ -470,14 +594,102 @@ const handlePrint = () => {
         <input name="contactNumber" placeholder="Contact" value={form.contactNumber}  readOnly={!!selectedPatient} onChange={handleChange} />
         <input name="aadhaarNumber" placeholder="Aadhaar" value={form.aadhaarNumber} onChange={handleChange} />
 
-        {/* VISIT */}
-        <h3>Visit Details</h3>
+       
 
-        <select value={visitType} onChange={(e) => setVisitType(e.target.value)}>
+       <h3 className="registration-title">
+  Registration Type
+</h3>
+
+<div className="registration-type-container">
+  <label
+    className={`registration-card ${
+      registrationType === "visit" ? "active" : ""
+    }`}
+  >
+    <input
+      type="radio"
+      value="visit"
+      checked={registrationType === "visit"}
+      onChange={() => setRegistrationType("visit")}
+    />
+    <span>Visit Registration</span>
+  </label>
+
+  <label
+    className={`registration-card ${
+      registrationType === "appointment" ? "active" : ""
+    }`}
+  >
+    <input
+      type="radio"
+      value="appointment"
+      checked={registrationType === "appointment"}
+      onChange={() => setRegistrationType("appointment")}
+    />
+    <span>Appointment Booking</span>
+  </label>
+</div>
+{/* 
+       <h3>Registration Type</h3>
+
+<div style={{ marginBottom: "15px" }}>
+  <label style={{ marginRight: "20px" }}>
+    <input
+      type="radio"
+      value="visit"
+      checked={registrationType === "visit"}
+      onChange={() => setRegistrationType("visit")}
+    />
+    Visit Registration
+  </label>
+
+  <label>
+    <input
+      type="radio"
+      value="appointment"
+      checked={registrationType === "appointment"}
+      onChange={() => setRegistrationType("appointment")}
+    />
+    Appointment Booking
+  </label>
+</div> */}
+
+
+        {/* VISIT */}
+        {/* <h3>Visit Details</h3> */}
+
+        <h3>
+  {registrationType === "appointment"
+    ? "Appointment Details"
+    : "Visit Details"}
+</h3>
+{/* 
+<h3>
+  {submittedData.appointment
+    ? "Appointment Details"
+    : "Visit Details"}
+</h3> */}
+
+        {/* <select value={visitType} onChange={(e) => setVisitType(e.target.value)}>
           <option value="">Select Visit</option>
           <option value="OPD">OPD</option>
           <option value="IPD_Admission">IPD Admission</option>
-        </select>
+        </select> */}
+
+
+{registrationType === "visit" && (
+  <select
+    value={visitType}
+    onChange={(e) => setVisitType(e.target.value)}
+  >
+    <option value="">Select Visit</option>
+    <option value="OPD">OPD</option>
+    <option value="IPD_Admission">
+      IPD Admission
+    </option>
+  </select>
+)}
+
 
      {/* SPECIALTY */}
 
@@ -517,8 +729,36 @@ const handlePrint = () => {
   ))}
 </select>
 
+
+
+{registrationType === "appointment" && (
+  <>
+    <input
+      type="date"
+      value={appointmentDate}
+      onChange={(e) =>
+        setAppointmentDate(e.target.value)
+      }
+    />
+
+    <input
+      type="time"
+      value={slotTime}
+      onChange={(e) =>
+        setSlotTime(e.target.value)
+      }
+    />
+  </>
+)}
+
         {/* PAYMENT */}
-        {visitType === "OPD" && (
+        {/* {visitType === "OPD" && ( */}
+
+
+        
+
+        {registrationType === "visit" &&
+ visitType === "OPD" && (
           <>
             <input
               type="number"
@@ -538,16 +778,32 @@ const handlePrint = () => {
           </>
         )}
 
-        <button type="submit">Submit</button>
+        {/* <button type="submit">Submit</button> */}
+
+<button type="submit" className="submit-btn">
+  Submit Registration
+</button>
+
+
       </form>
 
       {/* PRINT */}
     {submittedData && (
   <div>
 
-    <button onClick={handlePrint}>
+    {/* <button onClick={handlePrint}>
       🖨️ Print Receipt
-    </button>
+    </button> */}
+
+
+<button
+  type="button"
+  className="print-btn"
+  onClick={handlePrint}
+>
+  🖨 Print Receipt
+</button>
+
 
     <div ref={printRef} style={{ display: "none" }}>
 
@@ -657,14 +913,65 @@ const handlePrint = () => {
           }}
         >
           <tbody>
+{/* 
+            <tr>
+              <td><b>Visit Type</b></td> */}
+              {/* <td>{submittedData.visit.visitType}</td> */}
+              
+
+            {/* </tr> */}
+
 
             <tr>
-              <td><b>Visit Type</b></td>
-              <td>{submittedData.visit.visitType}</td>
+  <td>
+    <b>
+      {submittedData.appointment
+        ? "Registration Type"
+        : "Visit Type"}
+    </b>
+  </td>
 
-            </tr>
+  <td>
+    {submittedData.appointment
+      ? "Appointment"
+      : submittedData.visit?.visitType}
+  </td>
+</tr>
 
-            <tr>
+    // 👇 YAHAN PASTE KARNA HAI
+
+
+{submittedData.appointment && (
+  <>
+    <tr>
+      <td><b>Appointment Date</b></td>
+      <td>
+        {new Date(
+          submittedData.appointment.appointmentDate
+        ).toLocaleDateString()}
+      </td>
+
+      <td><b>Time</b></td>
+      <td>
+        {submittedData.appointment.slotTime}
+      </td>
+    </tr>
+
+    <tr>
+      <td><b>Token Number</b></td>
+      <td>
+        {submittedData.appointment.tokenNumber}
+      </td>
+
+      <td><b>Status</b></td>
+      <td>
+        {submittedData.appointment.status}
+      </td>
+    </tr>
+  </>
+)}
+
+            {/* <tr>
               <td><b>Payment Amount</b></td>
               <td>
                 ₹ {submittedData.visit.payment?.amount || 0}
@@ -677,7 +984,23 @@ const handlePrint = () => {
                   : "Pending"
                 }
               </td>
-            </tr>
+            </tr> */}
+
+            {submittedData.visit && (
+  <tr>
+    <td><b>Payment Amount</b></td>
+    <td>
+      ₹ {submittedData.visit?.payment?.amount || 0}
+    </td>
+
+    <td><b>Payment Status</b></td>
+    <td>
+      {submittedData.visit?.payment?.isPaid
+        ? "Paid"
+        : "Pending"}
+    </td>
+  </tr>
+)}
 
             <tr>
               <td><b>Visit Date</b></td>
@@ -720,4 +1043,4 @@ const handlePrint = () => {
   );
 };
 
-export default PatientForm;
+export default PatientForm; 

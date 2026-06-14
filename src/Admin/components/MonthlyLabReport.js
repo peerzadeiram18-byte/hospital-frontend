@@ -241,22 +241,28 @@ th{
     <div
       style={{
         padding: "20px",
-        background: "#f4f6f9",
+        // background: "#f4f6f9",
+        background: "#F7F3EE",
         minHeight: "100vh",
       }}
     >
       <div
         style={{
-          background: "#fff",
+          // background: "#fff",
+
+          background: "#FFFDF9",
           padding: "20px",
           borderRadius: "10px",
+          // boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+
           boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
         }}
       >
         <h2
           style={{
             marginBottom: "20px",
-            color: "#1e293b",
+            // color: "#1e293b",
+            color: "#6B4F3A",
           }}
         >
           🧪 Monthly Lab Report
@@ -278,7 +284,8 @@ th{
             style={{
               padding: "10px",
               borderRadius: "6px",
-              border: "1px solid #ccc",
+              // border: "1px solid #ccc",
+              border: "1px solid #D6C6B8",
             }}
           />
 
@@ -298,7 +305,8 @@ th{
             style={{
               padding: "10px 20px",
               border: "none",
-              background: "#2563eb",
+              // background: "#2563eb",
+              background: "#8B5E3C",
               color: "#fff",
               borderRadius: "6px",
               cursor: "pointer",
@@ -313,7 +321,8 @@ th{
             style={{
               padding: "10px 20px",
               border: "none",
-              background: "#16a34a",
+              // background: "#16a34a",
+              background: "#C89B3C",
               color: "#fff",
               borderRadius: "6px",
               cursor: "pointer",
@@ -332,8 +341,9 @@ th{
     flexWrap: "wrap",
     fontSize: "18px",
     fontWeight: "bold",
-    color: "#0f172a",
-  }}
+    // color: "#0f172a",
+
+color: "#6B4F3A",  }}
 >
   <div>
     Total Tests: {totalTests}
@@ -358,12 +368,19 @@ th{
             }}
           >
           <thead>
-  <tr
+  {/* <tr
     style={{
       background: "#1e293b",
       color: "#fff",
     }}
-  >
+  > */}
+
+  <tr
+  style={{
+    background: "#8B5E3C",
+    color: "#FFFDF9",
+  }}
+>
     <th style={thStyle}>Sr No</th>
     <th style={thStyle}>Date</th>
     <th style={thStyle}>Patient ID</th>
@@ -384,7 +401,9 @@ th{
         key={r._id || index}
         style={{
           background:
-            index % 2 === 0 ? "#fff" : "#f8fafc",
+            // index % 2 === 0 ? "#fff" : "#f8fafc",
+
+            index % 2 === 0 ? "#FFFDF9" : "#F5EEE6"
         }}
       >
                 <td style={tdStyle}>
@@ -424,8 +443,10 @@ th{
             ...tdStyle,
             color:
               r.payment?.status === "Paid"
-                ? "green"
-                : "red",
+                // ? "green"
+                ? "#6B8E23"
+                : "#B22222",
+                // : "red",
             fontWeight: "bold",
           }}
         >
@@ -470,17 +491,32 @@ th{
   );
 };
 
+// const thStyle = {
+//   padding: "12px",
+//   border: "1px solid #ddd",
+//   textAlign: "left",
+//   fontSize: "14px",
+// };
+
 const thStyle = {
   padding: "12px",
-  border: "1px solid #ddd",
+  border: "1px solid #D6C6B8",
   textAlign: "left",
   fontSize: "14px",
+  color: "#FFFDF9",
 };
+
 
 const tdStyle = {
   padding: "10px",
-  border: "1px solid #ddd",
+  border: "1px solid #E5D8CC",
   fontSize: "13px",
+  color: "#4B3A2F",
 };
+// const tdStyle = {
+//   padding: "10px",
+//   border: "1px solid #ddd",
+//   fontSize: "13px",
+// };
 
 export default MonthlyLabReport;

@@ -493,15 +493,15 @@ async (appointmentId, status) => {
 
       {/* DASHBOARD CARDS */}
 
-      <Grid
+      {/* <Grid
         container
         spacing={3}
         sx={{ mb: 5 }}
-      >
+      > */}
 
         {/* TOTAL APPOINTMENTS */}
 
-        <Grid
+        {/* <Grid
           item
           xs={12}
           md={6}
@@ -537,13 +537,13 @@ async (appointmentId, status) => {
 
           </Card>
 
-        </Grid>
+        </Grid> */}
 
 
 
         {/* LIVE QUEUE */}
 
-        <Grid
+        {/* <Grid
           item
           xs={12}
           md={6}
@@ -579,9 +579,9 @@ async (appointmentId, status) => {
 
           </Card>
 
-        </Grid>
+        </Grid> */}
 
-      </Grid>
+      {/* </Grid> */}
        
 
        {/* TODAY APPOINTMENTS LIST */}

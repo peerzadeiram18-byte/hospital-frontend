@@ -48,7 +48,7 @@ const ViewManualCharge = () => {
                 <th>Description</th>
               </tr>
             </thead>
-            <tbody>
+            {/* <tbody>
               {items.map(item => (
                 <tr key={item._id}>
                   <td>{item.itemName}</td>
@@ -57,7 +57,33 @@ const ViewManualCharge = () => {
                   <td>{item.description}</td>
                 </tr>
               ))}
-            </tbody>
+            </tbody> */}
+
+            <tbody>
+  {items.map((item, index) => (
+    <tr key={item._id}>
+      <td>
+        <strong>{item.itemName}</strong>
+      </td>
+
+      <td>
+        <span className="category-badge">
+          {item.category}
+        </span>
+      </td>
+
+      <td className="price-column">
+        ₹{item.defaultPrice}
+      </td>
+
+      <td className="description-cell">
+        {item.description}
+      </td>
+    </tr>
+  ))}
+</tbody>
+
+            
           </table>
         </div>
       )}

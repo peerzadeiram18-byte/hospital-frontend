@@ -100,25 +100,52 @@ const AddDepartment = () => {
 
   return (
     <div
+      // style={{
+      //   maxWidth: "900px",
+      //   margin: "0 auto",
+      //   padding: "20px",
+      //   fontFamily: "Arial, sans-serif",
+      // }}
+
       style={{
-        maxWidth: "900px",
-        margin: "0 auto",
-        padding: "20px",
-        fontFamily: "Arial, sans-serif",
-      }}
+  maxWidth: "900px",
+  margin: "0 auto",
+  padding: "20px",
+  fontFamily: "Arial, sans-serif",
+  background: "#F7F3EE",
+  minHeight: "100vh",
+}}
     >
-      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
+      {/* <h2 style={{ textAlign: "center", marginBottom: "20px" }}> */}
+
+      <h2
+  style={{
+    textAlign: "center",
+    marginBottom: "20px",
+    color: "#8B5E3C",
+    fontWeight: "700",
+  }}
+>
         Manage Departments
       </h2>
 
       {/* ➕ Add Department */}
       <div
+        // style={{
+        //   padding: "15px",
+        //   border: "1px solid #ddd",
+        //   borderRadius: "8px",
+        //   marginBottom: "20px",
+        // }}
+
         style={{
-          padding: "15px",
-          border: "1px solid #ddd",
-          borderRadius: "8px",
-          marginBottom: "20px",
-        }}
+  padding: "15px",
+  background: "#FFFDF9",
+  border: "1px solid #E8DCCB",
+  borderRadius: "12px",
+  marginBottom: "20px",
+  boxShadow: "0 4px 12px rgba(139,94,60,0.08)",
+}}
       >
         <h3>Add Department</h3>
         <form
@@ -126,11 +153,19 @@ const AddDepartment = () => {
           style={{ display: "flex", flexDirection: "column", gap: "10px" }}
         >
           <input
+            // style={{
+            //   padding: "10px",
+            //   borderRadius: "5px",
+            //   border: "1px solid #ccc",
+            // }}
+
             style={{
-              padding: "10px",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
-            }}
+  padding: "10px",
+  borderRadius: "8px",
+  border: "1px solid #D8C3A5",
+  background: "#FFFDF9",
+  color: "#4A3426",
+}}
             placeholder="Department Name"
             name="name"
             value={form.name}
@@ -142,11 +177,20 @@ const AddDepartment = () => {
             </span>
           )}
           <textarea
+            // style={{
+            //   padding: "10px",
+            //   borderRadius: "5px",
+            //   border: "1px solid #ccc",
+            // }}
+
+
             style={{
-              padding: "10px",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
-            }}
+  padding: "10px",
+  borderRadius: "8px",
+  border: "1px solid #D8C3A5",
+  background: "#FFFDF9",
+  color: "#4A3426",
+}}
             placeholder="Description"
             name="description"
             value={form.description}
@@ -161,7 +205,9 @@ const AddDepartment = () => {
             type="submit"
             style={{
               padding: "10px",
-              background: "#007bff",
+              // background: "#007bff",
+
+              background: "#8B5E3C",
               color: "#fff",
               border: "none",
               borderRadius: "5px",
@@ -175,12 +221,21 @@ const AddDepartment = () => {
 
       {/* 📂 Bulk Upload */}
       <div
+        // style={{
+        //   padding: "15px",
+        //   border: "1px solid #ddd",
+        //   borderRadius: "8px",
+        //   marginBottom: "20px",
+        // }}
+
         style={{
-          padding: "15px",
-          border: "1px solid #ddd",
-          borderRadius: "8px",
-          marginBottom: "20px",
-        }}
+  padding: "15px",
+  background: "#FFFDF9",
+  border: "1px solid #E8DCCB",
+  borderRadius: "12px",
+  marginBottom: "20px",
+  boxShadow: "0 4px 12px rgba(139,94,60,0.08)",
+}}
       >
         <h3>Bulk Upload Departments</h3>
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -194,7 +249,9 @@ const AddDepartment = () => {
             disabled={uploading}
             style={{
               padding: "10px",
-              background: uploading ? "#aaa" : "#28a745",
+              // background: uploading ? "#aaa" : "#28a745",
+
+              background: uploading ? "#B7A18B" : "#C89B3C",
               color: "#fff",
               border: "none",
               borderRadius: "5px",
@@ -207,7 +264,7 @@ const AddDepartment = () => {
       </div>
 
       {/* 📋 Departments List */}
-      <div
+      {/* <div
         style={{
           padding: "15px",
           border: "1px solid #ddd",
@@ -256,7 +313,7 @@ const AddDepartment = () => {
             </tbody>
           </table>
         )}
-      </div>
+      </div> */}
 
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
     </div>

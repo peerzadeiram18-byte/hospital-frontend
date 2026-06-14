@@ -1,68 +1,120 @@
 /* AddDepartment.css */
 
+/* Main Container */
 .department-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 90vh;
-  background-color: #f2f6fc;
+  background: #F7F3EE;
+  padding: 20px;
 }
 
+/* Card */
 .department-card {
-  background-color: #fff;
+  background: #FFFDF9;
   padding: 30px 40px;
   border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
-  max-width: 500px;
+  border: 1px solid #E8DCCB;
+  box-shadow: 0 4px 12px rgba(139, 94, 60, 0.08);
+  max-width: 550px;
   width: 100%;
 }
 
+/* Title */
 .department-title {
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #2c3e50;
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #8B5E3C;
   text-align: center;
+  font-weight: 700;
 }
 
+/* Form */
 .department-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
+/* Inputs */
 .input-field,
 .textarea-field {
-  padding: 10px 12px;
-  border: 1px solid #ccc;
+  padding: 12px;
+  border: 1px solid #D8C3A5;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 15px;
   width: 100%;
   outline: none;
+  background: #FFFDF9;
+  color: #4A3426;
+  transition: 0.3s;
 }
 
+.input-field:focus,
+.textarea-field:focus {
+  border-color: #C89B3C;
+  box-shadow: 0 0 0 3px rgba(200, 155, 60, 0.15);
+}
+
+/* Textarea */
 .textarea-field {
-  min-height: 100px;
+  min-height: 120px;
   resize: vertical;
 }
 
+/* Submit Button */
 .submit-btn {
-  background-color: #007bff;
-  color: white;
+  background: #8B5E3C;
+  color: #FFFDF9;
   border: none;
   padding: 12px;
   border-radius: 8px;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: 0.3s;
 }
 
 .submit-btn:hover {
-  background-color: #0056b3;
+  background: #6F472B;
 }
 
+/* Success Message */
 .message-text {
   margin-top: 15px;
-  color: green;
-  font-weight: 500;
+  color: #C89B3C;
+  font-weight: 600;
   text-align: center;
+}
+
+/* Error Message */
+.error-text {
+  color: #dc2626;
+  font-size: 14px;
+  margin-top: -8px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .department-container {
+    padding: 15px;
+  }
+
+  .department-card {
+    padding: 20px;
+  }
+
+  .department-title {
+    font-size: 24px;
+  }
+
+  .input-field,
+  .textarea-field {
+    font-size: 14px;
+  }
+
+  .submit-btn {
+    font-size: 15px;
+  }
 }

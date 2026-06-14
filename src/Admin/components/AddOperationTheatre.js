@@ -97,24 +97,52 @@ const AddOperationTheatre = () => {
   };
 
   return (
-    <div style={{
-      maxWidth: '600px',
-      margin: '40px auto',
-      padding: '20px',
-      background: '#fff',
-      borderRadius: '8px',
-      boxShadow: '0 0 10px rgba(0,0,0,0.1)'
-    }}>
+    // <div style={{
+    //   maxWidth: '600px',
+    //   margin: '40px auto',
+    //   padding: '20px',
+    //   background: '#fff',
+    //   borderRadius: '8px',
+    //   boxShadow: '0 0 10px rgba(0,0,0,0.1)'
+    // }}>
 
-      <h2 style={{ textAlign: 'center' }}>Add Operation Theater</h2>
+    <div style={{
+  maxWidth: '600px',
+  margin: '40px auto',
+  padding: '20px',
+  background: '#FFFDF9',
+  borderRadius: '12px',
+  border: '1px solid #E5D8CC',
+  boxShadow: '0 4px 16px rgba(139, 94, 60, 0.12)'
+}}>
+
+
+  <h2 style={{
+  textAlign: 'center',
+  color: '#6B4F3A'
+}}>
+
+      {/* <h2 style={{ textAlign: 'center' }}> */}
+        
+        
+        Add Operation Theater</h2>
 
       {/* ================= BULK UPLOAD ================= */}
-      <div style={{
+      {/* <div style={{
         marginBottom: '30px',
         padding: '15px',
         border: '1px dashed #ccc',
         borderRadius: '8px'
-      }}>
+      }}> */}
+
+      <div style={{
+  marginBottom: '30px',
+  padding: '15px',
+  border: '1px dashed #E5D8CC',
+  borderRadius: '10px',
+  background: '#F7F3EE'
+}}>
+
         <h4>Bulk Upload (Excel)</h4>
 
         <input
@@ -128,7 +156,9 @@ const AddOperationTheatre = () => {
           style={{
             marginTop: '10px',
             padding: '8px 15px',
-            backgroundColor: '#28a745',
+            // backgroundColor: '#28a745',
+
+            backgroundColor: '#C89B3C',
             color: '#fff',
             border: 'none',
             borderRadius: '5px',
@@ -154,7 +184,7 @@ const AddOperationTheatre = () => {
       {!showForm ? (
         <>
           {message && (
-            <p style={{ textAlign: 'center', color: 'green', fontWeight: 'bold' }}>
+            <p style={{ textAlign: 'center', color: '#6B4F3A', fontWeight: 'bold' }}>
               {message}
             </p>
           )}
@@ -162,7 +192,9 @@ const AddOperationTheatre = () => {
           <div style={{ textAlign: 'center', marginTop: '15px' }}>
             <button onClick={toggleForm} style={{
               padding: '10px 20px',
-              backgroundColor: '#3498db',
+              // backgroundColor: '#3498db',
+
+              backgroundColor: '#C89B3C',
               color: '#fff',
               border: 'none',
               borderRadius: '6px',
@@ -183,7 +215,15 @@ const AddOperationTheatre = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="Enter Operation Theater Name"
-              style={{ width: '100%', padding: '10px' }}
+              // style={{ width: '100%', padding: '10px' }}
+
+              style={{
+  width: '100%',
+  padding: '10px',
+  border: '1px solid #D6C6B8',
+  borderRadius: '8px',
+  background: '#FFFDF9'
+}}
             />
             {errors.name && (
               <div style={{ color: 'red', marginTop: '5px' }}>{errors.name}</div>
@@ -207,7 +247,8 @@ const AddOperationTheatre = () => {
           <button type="submit" style={{
             width: '100%',
             padding: '12px',
-            backgroundColor: '#007bff',
+            // backgroundColor: '#007bff',
+            backgroundColor: '#8B5E3C',
             color: '#fff',
             border: 'none',
             borderRadius: '5px'

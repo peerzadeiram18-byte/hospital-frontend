@@ -78,20 +78,91 @@ const AddLabour = () => {
   };
 
   return (
-    <div style={{
-      maxWidth: '500px',
-      margin: '40px auto',
-      padding: '30px',
-      backgroundColor: '#f9f9f9',
-      borderRadius: '10px'
-    }}>
+    // <div style={{
+    //   maxWidth: '500px',
+    //   margin: '40px auto',
+    //   padding: '30px',
+    //   backgroundColor: '#f9f9f9',
+    //   borderRadius: '10px'
+    // }}>
 
-      <h2 style={{ textAlign: 'center' }}>Add Labour Room</h2>
+
+
+    <div
+  style={{
+    maxWidth: "650px",
+    margin: "40px auto",
+    padding: "30px",
+    background: "#FFFDF9",
+    border: "1px solid #E8DCCB",
+    borderRadius: "16px",
+    boxShadow: "0 8px 24px rgba(139,94,60,0.08)",
+    fontFamily: "Arial, sans-serif",
+  }}
+>
+
+      {/* <h2 style={{ textAlign: 'center' }}> */}
+        
+
+<h2
+  style={{
+    textAlign: "center",
+    color: "#8B5E3C",
+    marginBottom: "25px",
+    fontWeight: "700",
+  }}
+>
+        
+        
+
+        Add Labour Room</h2>
 
       {/* 🔥 MODE SWITCH */}
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '20px' }}>
-        <button onClick={() => setMode("single")}>Single</button>
-        <button onClick={() => setMode("bulk")}>Bulk Upload</button>
+      {/* <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '20px' }}> */}
+
+<div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    gap: "12px",
+    marginBottom: "25px",
+  }}
+>
+
+        {/* <button onClick={() => setMode("single")}>Single</button> */}
+
+          <button
+    onClick={() => setMode("single")}
+    style={{
+      padding: "10px 20px",
+      background: mode === "single" ? "#8B5E3C" : "#F7F3EE",
+      color: mode === "single" ? "#fff" : "#4A3426",
+      border: "1px solid #CDB79E",
+      borderRadius: "8px",
+      cursor: "pointer",
+      fontWeight: "600",
+    }}
+  >
+    Single Entry
+  </button>
+
+
+  <button
+    onClick={() => setMode("bulk")}
+    style={{
+      padding: "10px 20px",
+      background: mode === "bulk" ? "#C89B3C" : "#F7F3EE",
+      color: mode === "bulk" ? "#fff" : "#4A3426",
+      border: "1px solid #CDB79E",
+      borderRadius: "8px",
+      cursor: "pointer",
+      fontWeight: "600",
+    }}
+  >
+    Bulk Upload
+  </button>
+
+        {/* <button onClick={() => setMode("bulk")}>Bulk Upload</button> */}
       </div>
 
       {showForm ? (
@@ -99,7 +170,7 @@ const AddLabour = () => {
           {/* ================= SINGLE FORM ================= */}
           {mode === "single" && (
             <form onSubmit={handleSubmit}>
-              <input
+              {/* <input
                 type="text"
                 name="name"
                 value={form.name}
@@ -107,54 +178,197 @@ const AddLabour = () => {
                 placeholder="Enter room name"
                 required
                 style={{ width: '100%', marginBottom: '10px' }}
-              />
+              /> */}
 
-              <textarea
+              <input
+  type="text"
+  name="name"
+  value={form.name}
+  onChange={handleChange}
+  placeholder="Enter room name"
+  required
+  style={{
+    width: "100%",
+    padding: "12px",
+    marginBottom: "12px",
+    border: "1px solid #D8C3A5",
+    borderRadius: "8px",
+    background: "#FFFDF9",
+    color: "#4A3426",
+    fontSize: "14px",
+  }}
+/>
+
+              {/* <textarea
                 name="description"
                 value={form.description}
                 onChange={handleChange}
                 placeholder="Enter description"
                 required
                 style={{ width: '100%', marginBottom: '10px' }}
-              />
+              /> */}
 
-              <button type="submit">Create Labour Room</button>
+<textarea
+  name="description"
+  value={form.description}
+  onChange={handleChange}
+  placeholder="Enter description"
+  required
+  style={{
+    width: "100%",
+    padding: "12px",
+    minHeight: "120px",
+    marginBottom: "15px",
+    border: "1px solid #D8C3A5",
+    borderRadius: "8px",
+    background: "#FFFDF9",
+    color: "#4A3426",
+    fontSize: "14px",
+  }}
+/>
+
+              {/* <button type="submit">Create Labour Room</button> */}
+
+
+              <button
+  type="submit"
+  style={{
+    width: "100%",
+    padding: "12px",
+    background: "#8B5E3C",
+    color: "#fff",
+    border: "none",
+    borderRadius: "8px",
+    cursor: "pointer",
+    fontWeight: "600",
+    fontSize: "15px",
+  }}
+>
+  Create Labour Room
+</button>
+
+
+
             </form>
           )}
 
           {/* ================= BULK UPLOAD ================= */}
           {mode === "bulk" && (
-            <div>
-              <input
+            // <div>
+
+            <div
+  style={{
+    background: "#F7F3EE",
+    padding: "20px",
+    borderRadius: "12px",
+    border: "1px solid #E8DCCB",
+  }}
+>
+              {/* <input
                 type="file"
                 accept=".xlsx, .xls"
                 onChange={(e) => setFile(e.target.files[0])}
-              />
+              /> */}
 
-              <button onClick={handleBulkUpload} style={{ marginTop: '10px' }}>
+
+<input
+  type="file"
+  accept=".xlsx,.xls"
+  onChange={(e) => setFile(e.target.files[0])}
+  style={{
+    width: "100%",
+    padding: "10px",
+    border: "1px solid #D8C3A5",
+    borderRadius: "8px",
+    background: "#FFFDF9",
+  }}
+/>
+
+
+<button
+  onClick={handleBulkUpload}
+  style={{
+    marginTop: "15px",
+    width: "100%",
+    padding: "12px",
+    background: "#C89B3C",
+    color: "#fff",
+    border: "none",
+    borderRadius: "8px",
+    cursor: "pointer",
+    fontWeight: "600",
+  }}
+>
+  Upload Excel
+</button>
+
+              {/* <button onClick={handleBulkUpload} style={{ marginTop: '10px' }}>
                 Upload Excel
-              </button>
+              </button> */}
 
-              <p style={{ fontSize: '12px', marginTop: '10px' }}>
+              {/* <p style={{ fontSize: '12px', marginTop: '10px' }}>
                 ⚠️ Excel format:
                 <br />
                 <b>name | description</b>
-              </p>
+              </p> */}
+
+
+              <p
+  style={{
+    marginTop: "15px",
+    color: "#6B4F3A",
+    fontSize: "13px",
+    textAlign: "center",
+  }}
+>
+  Excel Format:
+  <br />
+  <strong>name | description</strong>
+</p>
             </div>
           )}
         </>
       ) : (
         <>
-          <p style={{
+          {/* <p style={{
             textAlign: 'center',
             color: message.toLowerCase().includes('success') ? 'green' : 'red'
           }}>
             {message}
-          </p>
+          </p> */}
 
-          <button onClick={handleAddAnother}>
+
+<p
+  style={{
+    textAlign: "center",
+    fontWeight: "600",
+    color: message.toLowerCase().includes("success")
+      ? "#15803d"
+      : "#dc2626",
+    marginBottom: "20px",
+  }}
+>
+  {message}
+</p>
+
+<button
+  onClick={handleAddAnother}
+  style={{
+    width: "100%",
+    padding: "12px",
+    background: "#8B5E3C",
+    color: "#fff",
+    border: "none",
+    borderRadius: "8px",
+    cursor: "pointer",
+    fontWeight: "600",
+  }}
+>
+  + Add Another
+</button>
+          {/* <button onClick={handleAddAnother}>
             + Add Another
-          </button>
+          </button> */}
         </>
       )}
     </div>

@@ -1,6 +1,6 @@
 .ward-container {
   padding: 1.5rem;
-  background-color: #f4f6f8;
+  background-color: #F7F3EE;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -11,22 +11,23 @@
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
-  color: #1d4ed8;
+  color: #8B5E3C;
   text-align: center;
 }
 
 .loading-text {
   font-size: 1rem;
-  color: #333;
+  color: #4A3426;
 }
 
 .table-wrapper {
   width: 100%;
   max-width: 1000px;
   overflow-x: auto;
-  background-color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-radius: 0.5rem;
+  background-color: #FFFDF9;
+  box-shadow: 0 4px 12px rgba(139, 94, 60, 0.10);
+  border: 1px solid #E8DCCB;
+  border-radius: 12px;
 }
 
 .ward-table {
@@ -39,20 +40,64 @@
 .ward-table td {
   padding: 0.75rem;
   text-align: left;
-  border: 1px solid #ddd;
+  border: 1px solid #E8DCCB;
   vertical-align: top;
+  color: #4A3426;
 }
 
 .ward-table th {
-  background-color: #1976d2;
-  color: white;
+  background-color: #8B5E3C;
+  color: #FFFDF9;
+  font-weight: 600;
+}
+
+.ward-table tr:nth-child(odd) {
+  background-color: #FFFDF9;
 }
 
 .ward-table tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #F7F3EE;
+}
+
+.ward-table tr:hover {
+  background-color: #F3E7D8;
+  transition: 0.3s ease;
 }
 
 .ward-table ul {
   padding-left: 1.25rem;
   margin: 0;
 }
+
+.ward-table li {
+  color: #4A3426;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .ward-container {
+    padding: 1rem;
+  }
+
+  .ward-title {
+    font-size: 1.5rem;
+  }
+
+  .ward-table th,
+  .ward-table td {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ward-title {
+    font-size: 1.25rem;
+  }
+
+  .ward-table th,
+  .ward-table td {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+} 

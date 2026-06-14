@@ -1,0 +1,208 @@
+/* ================= BASE CONTAINER ================= */
+
+.ref-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f7f3ee;
+  padding: 20px;
+}
+
+/* ================= CARD ================= */
+
+.ref-card {
+  width: 100%;
+  max-width: 600px;
+  background: #FFFDF9;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(139, 94, 60, 0.15);
+  border: 1px solid #E5D8CC;
+}
+
+/* ================= TITLE ================= */
+
+.ref-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #6B4F3A;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* ================= TABS ================= */
+
+.ref-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.ref-tabs button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #F1E7DE;
+  color: #6B4F3A;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.ref-tabs button:hover {
+  background: #E5D8CC;
+}
+
+.ref-tabs .active {
+  background: #8B5E3C;
+  color: #FFFDF9;
+}
+
+/* ================= FORM ================= */
+
+.ref-form .input-group {
+  margin-bottom: 15px;
+}
+
+.ref-form label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #6B4F3A;
+}
+
+.ref-form input,
+form select,
+.bulk-dropdown {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+
+  border-radius: 8px;
+  border: 1px solid #D6C6B8;
+
+  background: #FFFDF9;
+  color: #4B3A2F;
+
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.ref-form input:focus,
+form select:focus,
+.bulk-dropdown:focus {
+  border-color: #8B5E3C;
+  box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.15);
+}
+
+/* ================= ERROR ================= */
+
+.error {
+  color: #B22222;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* ================= BUTTONS ================= */
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: 0.3s ease;
+}
+
+.primary {
+  background: #8B5E3C;
+  color: #FFFDF9;
+}
+
+.primary:hover {
+  background: #6B4F3A;
+}
+
+.success {
+  background: #C89B3C;
+  color: #fff;
+}
+
+.success:hover {
+  background: #B8860B;
+}
+
+/* ================= MESSAGE ================= */
+
+.msg {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 600;
+  color: #6B4F3A;
+}
+
+/* ================= HINT ================= */
+
+.hint {
+  font-size: 12px;
+  color: #8B7D70;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* ================= BULK BOX ================= */
+
+.bulk-upload-box {
+  margin-top: 15px;
+  padding: 18px;
+
+  border: 1px dashed #D6C6B8;
+  background: #F7F3EE;
+
+  border-radius: 10px;
+  text-align: center;
+}
+
+.bulk-upload-box h4 {
+  margin-bottom: 10px;
+  color: #6B4F3A;
+}
+
+/* ================= FORM CONTAINER (if used elsewhere) ================= */
+
+.form-container2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  padding: 20px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 800px;
+
+  background-color: #FFFDF9;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 16px rgba(139, 94, 60, 0.12);
+  border: 1px solid #E5D8CC;
+
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .ref-card {
+    width: 95%;
+    padding: 18px;
+  }
+
+  .ref-tabs {
+    flex-direction: column;
+  }
+}

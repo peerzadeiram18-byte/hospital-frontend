@@ -72,20 +72,20 @@ const drawerContent = (
       {[
         { label: "Patient", path: "/receptionist-dashboard/patient-form", icon: <IpdIcon /> },
         { label: "ViewPatient", path: "/receptionist-dashboard/viewPatient", icon: <PersonIcon /> },
-{
-  label: "Appointment Booking",
-  path: "/receptionist-dashboard/appointments",icon: <PersonIcon />
-},
+// {
+//   label: "Appointment Booking",
+//   path: "/receptionist-dashboard/appointments",icon: <PersonIcon />
+// },
 
 {
   label: "Appointment List",
   path: "/receptionist-dashboard/appointment-list",icon: <PersonIcon />
 },
 
-{
-  label: "Queue Management",
-  path: "/receptionist-dashboard/queue-management",icon: <PersonIcon />
-},
+// {
+//   label: "Queue Management",
+//   path: "/receptionist-dashboard/queue-management",icon: <PersonIcon />
+// },
         { label: "Patient Visits Viewer", path: "/receptionist-dashboard/patient-visits-viewer", icon: <PharmacyIcon /> },
         //  { label: "Update Patient Satus", path: "/receptionist-dashboard/UpdatePatientStatus", icon: <UpdateIcon /> },
         { label: "IPD Admission Form", path: "/receptionist-dashboard/IPDAdmissionForm", icon: <AdmissionIcon /> },
@@ -110,21 +110,38 @@ const drawerContent = (
             px: 3,
             py: 1,
              cursor: 'pointer',
-            backgroundColor: activeMenu === label ? '#e3f2fd' : 'transparent',
-            borderLeft: activeMenu === label ? '4px solid #1976d2' : 'none',
+            // backgroundColor: activeMenu === label ? '#e3f2fd' : 'transparent',
+            // borderLeft: activeMenu === label ? '4px solid #1976d2' : 'none',
+
+            backgroundColor:
+  activeMenu === label ? '#e0f2f1' : 'transparent',
+
+borderLeft:
+  activeMenu === label ? '4px solid #00695c' : 'none',
+            // '&:hover': {
+            //   backgroundColor: '#f5f5f5',
+            // }
             '&:hover': {
-              backgroundColor: '#f5f5f5',
-            }
+  backgroundColor: '#f1f8f7',
+}
           }}
         >
-          <ListItemIcon sx={{ color: activeMenu === label ? '#1976d2' : 'inherit', minWidth: 36 }}>
+          {/* <ListItemIcon sx={{ color: activeMenu === label ? '#1976d2' : 'inherit', minWidth: 36 }}> */}
+
+          <ListItemIcon
+  sx={{
+    color: activeMenu === label ? '#00695c' : '#455a64',
+    minWidth: 36
+  }}
+>
             {icon}
           </ListItemIcon>
           <ListItemText
             primary={label}
             primaryTypographyProps={{
               fontWeight: 500,
-              color: activeMenu === label ? '#1976d2' : 'inherit'
+              // color: activeMenu === label ? '#1976d2' : 'inherit'
+              color: activeMenu === label ? '#00695c' : '#37474f'
             }}
           />
         </ListItem>
@@ -144,7 +161,16 @@ const drawerContent = (
 
 
       {/* AppBar */}
-      <AppBar position="fixed" sx={{ zIndex: 1201, backgroundColor: 'purple' }}>
+      {/* <AppBar position="fixed" sx={{ zIndex: 1201, backgroundColor: 'purple' }}> */}
+
+      <AppBar
+  position="fixed"
+  sx={{
+    zIndex: 1201,
+    background: "linear-gradient(90deg, #00695c, #0b7a6e)",
+    boxShadow: "0 4px 15px rgba(0,105,92,0.25)"
+  }}
+>
 <Toolbar
   sx={{
     display: 'flex',
@@ -167,25 +193,48 @@ const drawerContent = (
     cursor: 'pointer'
   }}
 >
+
+
+  <IconButton
+  color="inherit"
+  onClick={() => setMobileOpen(prev => !prev)}
+  edge="start"
+  sx={{
+    backgroundColor: 'rgba(255,255,255,0.15)',
+    color: '#fff',
+    transition: '0.3s',
+
+    '&:hover': {
+      backgroundColor: 'rgba(255,255,255,0.25)',
+      transform: 'scale(1.05)',
+    }
+  }}
+>
+  <MenuIcon />
+</IconButton>
   
-    <IconButton
+    {/* <IconButton
       color="inherit"
       onClick={() => setMobileOpen(prev => !prev)}
       edge="start"
       sx={{
-        backgroundColor: 'rgba(255,255,255,0.2)',
-        transform: 'scale(1.1)',
-        transition: 'all 0.2s ease-in-out',
+
+        background: '#ffffff',
+borderRight: '1px solid #b2dfdb',
+boxShadow: '4px 0 15px rgba(0,105,92,0.08)',
+        // backgroundColor: 'rgba(255,255,255,0.2)',
+        // transform: 'scale(1.1)',
+        // transition: 'all 0.2s ease-in-out',
       }}
     >
       <MenuIcon />
-    </IconButton>
+    </IconButton> */}
   
 </Box>
 
   {/* Right side: Logout */}
   <Box sx={{ display: 'flex', alignItems: 'center' }}>
-    <IconButton
+    {/* <IconButton
       color="inherit"
       onClick={() => {
         localStorage.removeItem("jwt");
@@ -195,7 +244,25 @@ const drawerContent = (
       title="Logout"
     >
       <LogoutIcon />
-    </IconButton>
+    </IconButton> */}
+
+    <IconButton
+  color="inherit"
+  onClick={() => {
+    localStorage.removeItem("jwt");
+    window.location.href = "/";
+  }}
+  sx={{
+    '&:hover': {
+      backgroundColor: 'rgba(255,255,255,0.15)',
+      transform: 'scale(1.05)'
+    },
+    transition: '0.3s'
+  }}
+>
+  <LogoutIcon />
+</IconButton>
+
   </Box>
 </Toolbar>
 
@@ -227,19 +294,39 @@ const drawerContent = (
 
 
       {/* Main Content */}
-      <Box
+      {/* <Box
   component="main"
   sx={{
     p: 3,
     width:"100%"
   }}
+> */}
+
+<Box
+  component="main"
+  sx={{
+    p: 3,
+    width: "100%",
+    minHeight: "100vh",
+    backgroundColor: "#f4f8f7"
+  }}
 >
 
         <Toolbar />
       
-        <Typography variant="body1" sx={{ mb: 2 }}>
-         Hospital Management System
-        </Typography>
+        {/* <Typography variant="body1" sx={{ mb: 2 }}> */}
+
+  <Typography
+  variant="h5"
+  sx={{
+    color: "#00695c",
+    fontWeight: 700,
+    mb: 3,
+    mt: 1
+  }}
+>
+  Hospital Management System
+</Typography>
 <div style={{ display: 'flex' }}>
       {/* Sidebar here */}
       <div style={{ flex: 1 }}>

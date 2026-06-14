@@ -74,6 +74,10 @@ import CompleteScan from './components/Dashboard/CompleteScan';
 
 
 import SonographyDashboard from "./components/Dashboard/SonographyDashboard";
+
+import RadiologyDashboard from "./components/Dashboard/RadiologyDashboard";
+
+
 import MonthlyLabReport from './Admin/components/MonthlyLabReport.js';
 import LabDashboard from './components/Dashboard/LabDashboard.js';
 import AddTest from './components/Dashboard/AddTests.js';
@@ -316,6 +320,14 @@ element={<QueueManagement />}
   path="/sonography-dashboard"
   element={<SonographyDashboard />}
 />
+
+
+<Route
+  path="/radiology-dashboard"
+  element={<RadiologyDashboard />}
+/>
+
+
 
 {/* <Route path="/sonography-dashboard" element={<SonographyDashboard />}>
 

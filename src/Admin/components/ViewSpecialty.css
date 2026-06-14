@@ -1,116 +1,163 @@
 .specialty-container {
-  padding: 1rem;
-  max-width: 900px;
+  padding: 20px;
+  max-width: 1000px;
   margin: auto;
+  background: #F7F3EE;
+  min-height: 100vh;
 }
 
+/* Title */
+
 .specialty-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #1d4ed8;
-  margin-bottom: 1rem;
+  font-size: 32px;
+  font-weight: 700;
   text-align: center;
+  color: #8B5E3C;
+  margin-bottom: 25px;
 }
+
+/* Loading & Error */
 
 .loading-text,
 .error-text {
   text-align: center;
-  font-size: 1rem;
+  font-size: 16px;
+  color: #4A3426;
 }
 
 .error-text {
-  color: red;
+  color: #c0392b;
 }
 
-.table-wrapper {
-  overflow-x: auto;
+/* Card */
+
+.bulk-upload-container {
+  background: #FFFDF9;
+  padding: 20px;
+  margin-bottom: 25px;
+  border: 1px solid #E8DCCB;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(139, 94, 60, 0.08);
 }
+
+/* Section Title */
+
+.bulk-upload-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #8B5E3C;
+  margin-bottom: 15px;
+}
+
+/* Upload Area */
+
+.bulk-upload-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.bulk-upload-input {
+  flex: 1;
+  min-width: 220px;
+  padding: 10px;
+  border: 1px solid #D8C3A5;
+  border-radius: 8px;
+  background: #FFFDF9;
+  color: #4A3426;
+}
+
+/* Buttons */
+
+.bulk-upload-actions button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  background: #C89B3C;
+  transition: 0.3s;
+}
+
+.bulk-upload-actions button:hover {
+  background: #B8860B;
+}
+
+/* Table Card */
+
+.table-wrapper {
+  background: #FFFDF9;
+  border: 1px solid #E8DCCB;
+  border-radius: 12px;
+  overflow-x: auto;
+  box-shadow: 0 4px 12px rgba(139, 94, 60, 0.08);
+}
+
+/* Table */
 
 .responsive-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.9rem;
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  font-size: 15px;
 }
 
-.responsive-table th,
-.responsive-table td {
-  padding: 0.75rem 1rem;
-  border: 1px solid #e5e7eb;
-  text-align: left;
-  white-space: nowrap;
-}
+/* Header */
 
 .responsive-table th {
-  background-color: #f3f4f6;
-  color: #111827;
-  font-weight: 600;
+  background: #8B5E3C;
+  color: #FFFDF9;
+  padding: 12px;
+  border: 1px solid #CDB79E;
+  text-align: left;
 }
 
-.responsive-table tr:nth-child(even) {
-  background-color: #f9fafb;
+/* Cells */
+
+.responsive-table td {
+  padding: 12px;
+  border: 1px solid #E8DCCB;
+  color: #4A3426;
 }
 
-@media (max-width: 600px) {
+/* Alternate Rows */
+
+.responsive-table tbody tr:nth-child(even) {
+  background: #F7F3EE;
+}
+
+.responsive-table tbody tr:nth-child(odd) {
+  background: #FFFDF9;
+}
+
+/* Hover */
+
+.responsive-table tbody tr:hover {
+  background: #EFE4D6;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
   .specialty-title {
-    font-size: 1.25rem;
+    font-size: 24px;
   }
 
   .responsive-table th,
   .responsive-table td {
-    padding: 0.5rem;
-    font-size: 0.85rem;
+    padding: 10px;
+    font-size: 13px;
   }
-}/* Bulk Upload Section */
-.bulk-upload-container {
-  background: #ffffff;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-}
 
-.bulk-upload-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #374151;
-  margin-bottom: 0.75rem;
-}
-
-.bulk-upload-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.bulk-upload-input {
-  border: 1px solid #d1d5db;
-  padding: 0.4rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  background-color: #f9fafb;
-  cursor: pointer;
-}
-
-.bulk-upload-input:hover {
-  background-color: #f3f4f6;
-}
-
-/* ✅ Mobile friendly */
-@media (max-width: 600px) {
   .bulk-upload-actions {
-    flex-direction: column;   /* stack vertically */
-    align-items: stretch;     /* full width */
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .bulk-upload-input {
-    width: 100%;              /* expand input */
-  }
-
+  .bulk-upload-input,
   .bulk-upload-actions button {
-    width: 100%;              /* expand button */
+    width: 100%;
   }
 }
-

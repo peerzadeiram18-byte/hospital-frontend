@@ -10,8 +10,8 @@ import {
   Container,
   Typography,
   Grid,
-  Card,
-  CardContent,
+  // Card,
+  // CardContent,
   Button,
   MenuItem,
   TextField
@@ -173,173 +173,312 @@ const handleBook = async () => {
 };
 
 
-  return (
-
-    <Container
-      maxWidth="md"
-      sx={{ mt: 5 }}
+return (
+  <div
+    style={{
+      background: "#F7F3EE",
+      minHeight: "100vh",
+      padding: "20px"
+    }}
+  >
+    <div
+      style={{
+        maxWidth: "900px",
+        margin: "30px auto",
+        background: "#FFFDF9",
+        padding: "40px",
+        borderRadius: "20px",
+        border: "1px solid #E8DCCB",
+        boxShadow: "0 8px 24px rgba(139,94,60,0.12)"
+      }}
     >
-
       <Typography
-        variant="h4"
+        variant="h3"
         sx={{
-          mb: 4,
-          fontWeight: "bold"
+          textAlign: "center",
+          color: "#8B5E3C",
+          fontWeight: 700,
+          mb: 5
         }}
       >
         Book Appointment
       </Typography>
 
-      <Card
-        sx={{
-          p: 4,
-          borderRadius: 4
-        }}
-      >
-
-        <Grid
-          container
-          spacing={3}
-        >
-
-          {/* SPECIALTY */}
-
-          <Grid item xs={12}>
-
-            <TextField
-              select
-              fullWidth
-              label="Select Specialty"
-              value={specialtyId}
-              onChange={(e) => {
-
-                setSpecialtyId(
-                  e.target.value
-                );
-
-                fetchDoctors(
-                  e.target.value
-                );
-              }}
-            >
-
-              {
-                specialties.map(
-                  (s) => (
-
-                    <MenuItem
-                      key={s._id}
-                      value={s._id}
-                    >
-                      {s.name}
-                    </MenuItem>
-                  )
-                )
-              }
-
-            </TextField>
-
-          </Grid>
-
-
-
-          {/* DOCTOR */}
-
-          <Grid item xs={12}>
-
-            <TextField
-              select
-              fullWidth
-              label="Select Doctor"
-              value={doctorId}
-              onChange={(e) =>
-                setDoctorId(
-                  e.target.value
-                )
-              }
-            >
-
-              {
-                doctors.map(
-                  (d) => (
-
-                    <MenuItem
-                      key={d._id}
-                      value={d._id}
-                    >
-                      {d.userId?.name}
-                    </MenuItem>
-                  )
-                )
-              }
-
-            </TextField>
-
-          </Grid>
-
-
-
-          {/* DATE */}
-
-          <Grid item xs={12} md={6}>
-
-            <TextField
-              type="date"
-              fullWidth
-              value={appointmentDate}
-              onChange={(e) =>
-                setAppointmentDate(
-                  e.target.value
-                )
-              }
-            />
-
-          </Grid>
-
-
-
-          {/* SLOT */}
-
-          <Grid item xs={12} md={6}>
-
-            <TextField
-              fullWidth
-              label="Slot Time"
-              value={slotTime}
-              onChange={(e) =>
-                setSlotTime(
-                  e.target.value
-                )
-              }
-            />
-
-          </Grid>
-
-
-
-          {/* BUTTON */}
-
-          <Grid item xs={12}>
-
-            <Button
-              variant="contained"
-              fullWidth
-              size="large"
-              onClick={handleBook}
-            >
-              Book Appointment
-            </Button>
-
-          </Grid>
-
+      <Grid container spacing={3}>
+        {/* Specialty */}
+        <Grid item xs={12} md={6}>
+          <TextField
+            select
+            fullWidth
+            label="Select Specialty"
+            value={specialtyId}
+            onChange={(e) => {
+              setSpecialtyId(e.target.value);
+              fetchDoctors(e.target.value);
+            }}
+          >
+            {specialties.map((s) => (
+              <MenuItem
+                key={s._id}
+                value={s._id}
+              >
+                {s.name}
+              </MenuItem>
+            ))}
+          </TextField>
         </Grid>
 
-      </Card>
+        {/* Doctor */}
+        <Grid item xs={12} md={6}>
+          <TextField
+            select
+            fullWidth
+            label="Select Doctor"
+            value={doctorId}
+            onChange={(e) =>
+              setDoctorId(e.target.value)
+            }
+          >
+            {doctors.map((d) => (
+              <MenuItem
+                key={d._id}
+                value={d._id}
+              >
+                {d.userId?.name}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Grid>
 
-      <ToastContainer />
+        {/* Appointment Date */}
+        <Grid item xs={12} md={6}>
+          <TextField
+            fullWidth
+            type="date"
+            label="Appointment Date"
+            InputLabelProps={{
+              shrink: true
+            }}
+            value={appointmentDate}
+            onChange={(e) =>
+              setAppointmentDate(
+                e.target.value
+              )
+            }
+          />
+        </Grid>
 
-    </Container>
-  );
+        {/* Slot Time */}
+        <Grid item xs={12} md={6}>
+          <TextField
+            fullWidth
+            label="Slot Time"
+            placeholder="10:00 AM"
+            value={slotTime}
+            onChange={(e) =>
+              setSlotTime(
+                e.target.value
+              )
+            }
+          />
+        </Grid>
+
+        {/* Button */}
+        <Grid item xs={12}>
+          <Button
+            variant="contained"
+            fullWidth
+            size="large"
+            onClick={handleBook}
+            sx={{
+              height: "55px",
+              background: "#8B5E3C",
+              borderRadius: "10px",
+              fontSize: "16px",
+              fontWeight: 600,
+              textTransform: "none",
+              "&:hover": {
+                background: "#734A2F"
+              }
+            }}
+          >
+            Book Appointment
+          </Button>
+        </Grid>
+      </Grid>
+    </div>
+
+    <ToastContainer />
+  </div>
+);
+
+  // return (
+
+  //   <Container
+  //     maxWidth="md"
+  //     sx={{ mt: 5 }}
+  //   >
+
+  //     <Typography
+  //       variant="h4"
+  //       sx={{
+  //         mb: 4,
+  //         fontWeight: "bold"
+  //       }}
+  //     >
+  //       Book Appointment
+  //     </Typography>
+
+  //     <Card
+  //       sx={{
+  //         p: 4,
+  //         borderRadius: 4
+  //       }}
+  //     >
+
+  //       <Grid
+  //         container
+  //         spacing={3}
+  //       >
+
+  //         {/* SPECIALTY */}
+
+  //         <Grid item xs={12}>
+
+  //           <TextField
+  //             select
+  //             fullWidth
+  //             label="Select Specialty"
+  //             value={specialtyId}
+  //             onChange={(e) => {
+
+  //               setSpecialtyId(
+  //                 e.target.value
+  //               );
+
+  //               fetchDoctors(
+  //                 e.target.value
+  //               );
+  //             }}
+  //           >
+
+  //             {
+  //               specialties.map(
+  //                 (s) => (
+
+  //                   <MenuItem
+  //                     key={s._id}
+  //                     value={s._id}
+  //                   >
+  //                     {s.name}
+  //                   </MenuItem>
+  //                 )
+  //               )
+  //             }
+
+  //           </TextField>
+
+  //         </Grid>
+
+
+
+  //         {/* DOCTOR */}
+
+  //         <Grid item xs={12}>
+
+  //           <TextField
+  //             select
+  //             fullWidth
+  //             label="Select Doctor"
+  //             value={doctorId}
+  //             onChange={(e) =>
+  //               setDoctorId(
+  //                 e.target.value
+  //               )
+  //             }
+  //           >
+
+  //             {
+  //               doctors.map(
+  //                 (d) => (
+
+  //                   <MenuItem
+  //                     key={d._id}
+  //                     value={d._id}
+  //                   >
+  //                     {d.userId?.name}
+  //                   </MenuItem>
+  //                 )
+  //               )
+  //             }
+
+  //           </TextField>
+
+  //         </Grid>
+
+
+
+  //         {/* DATE */}
+
+  //         <Grid item xs={12} md={6}>
+
+  //           <TextField
+  //             type="date"
+  //             fullWidth
+  //             value={appointmentDate}
+  //             onChange={(e) =>
+  //               setAppointmentDate(
+  //                 e.target.value
+  //               )
+  //             }
+  //           />
+
+  //         </Grid>
+
+
+
+  //         {/* SLOT */}
+
+  //         <Grid item xs={12} md={6}>
+
+  //           <TextField
+  //             fullWidth
+  //             label="Slot Time"
+  //             value={slotTime}
+  //             onChange={(e) =>
+  //               setSlotTime(
+  //                 e.target.value
+  //               )
+  //             }
+  //           />
+
+  //         </Grid>
+
+
+
+  //         {/* BUTTON */}
+
+  //         <Grid item xs={12}>
+
+  //           <Button
+  //             variant="contained"
+  //             fullWidth
+  //             size="large"
+  //             onClick={handleBook}
+  //           >
+  //             Book Appointment
+  //           </Button>
+
+  //         </Grid>
+
+  //       </Grid>
+
+  //     </Card>
+
+  //     <ToastContainer />
+
+  //   </Container>
+  // );
 };
 
 export default BookAppointMent;

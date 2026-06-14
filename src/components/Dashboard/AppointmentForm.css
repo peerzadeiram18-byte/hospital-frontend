@@ -1,0 +1,105 @@
+.appointment-page{
+  min-height:100vh;
+  background:#f4f7fb;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:30px;
+}
+
+.appointment-card{
+  width:100%;
+  max-width:950px;
+  background:#fff;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+
+.appointment-card h2{
+  text-align:center;
+  margin-bottom:25px;
+  color:#2c3e50;
+}
+
+.appointment-form{
+  display:grid;
+  grid-template-columns:
+  repeat(2,1fr);
+  gap:18px;
+}
+
+.full-width{
+  grid-column:1/3;
+  position:relative;
+}
+
+.appointment-form input,
+.appointment-form select{
+  width:100%;
+  padding:14px;
+  border:1px solid #dcdfe6;
+  border-radius:10px;
+  font-size:14px;
+  outline:none;
+  transition:.3s;
+  background:#fff;
+}
+
+.appointment-form input:focus,
+.appointment-form select:focus{
+  border-color:#4a90e2;
+  box-shadow:0 0 5px rgba(74,144,226,.3);
+}
+
+.patient-dropdown{
+  position:absolute;
+  top:52px;
+  width:100%;
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:10px;
+  max-height:180px;
+  overflow:auto;
+  z-index:999;
+  box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+
+.patient-item{
+  padding:12px;
+  cursor:pointer;
+  border-bottom:1px solid #eee;
+}
+
+.patient-item:hover{
+  background:#f0f6ff;
+}
+
+.book-btn{
+  grid-column:1/3;
+  padding:14px;
+  border:none;
+  background:#1976d2;
+  color:#fff;
+  font-size:16px;
+  font-weight:600;
+  border-radius:10px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.book-btn:hover{
+  background:#125db2;
+}
+
+@media(max-width:768px){
+
+  .appointment-form{
+    grid-template-columns:1fr;
+  }
+
+  .full-width,
+  .book-btn{
+    grid-column:auto;
+  }
+}
